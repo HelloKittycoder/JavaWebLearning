@@ -1,17 +1,19 @@
-uploadify3.2.1���֣�
-1.�޸���uploadify.css�ĵ�74�У���Ϊȡ��ͼƬ��λ���Ҳ�����
-background: url('../img/uploadify-cancel.png') 0 0 no-repeat;	�ĳ���
+uploadify3.2.1部分：
+参考链接：http://960432397.iteye.com/blog/2038345
+
+1.修改了uploadify.css的第74行，因为取消图片的位置找不到。
+background: url('../img/uploadify-cancel.png') 0 0 no-repeat;	改成了
 background: url('./img/uploadify-cancel.png') 0 0 no-repeat;
 
-2.�ĵ��ϴ�ҳ�棺
-file���͵������ע��id��name����һ�£��Լ���ʼ��ʱ��fileObjName��������Ҳ��֮һ�£������õĶ���uploadify��
-��̨�ڽ���ʱ���ֱ���һ��uploadify��File���ͣ���uploadifyFileName��String���ͣ�������
+2.文档上传页面：
+file类型的输入框，注意id、name保持一致，以及初始化时“fileObjName”属性名也与之一致，这里用的都是uploadify，
+后台在接收时，分别用一个uploadify（File类型）和uploadifyFileName（String类型）来接收
 
-ע��
-��1�����ղ������߽����һ��FileName
-��2��uploadify���յ��Ǳ����ڷ���������ʱ�ļ���λ�ã������actionһ��ɣ�����ʱ�ļ��ͻ���ʧ��
-uploadifyFileName���յ����û��ϴ����ļ���ʵ�����ƣ��ļ���+��׺����
+注：
+（1）接收参数二者仅相差一个FileName
+（2）uploadify接收的是保存在服务器上临时文件的位置，等这个action一完成，该临时文件就会消失；
+uploadifyFileName接收的是用户上传的文件的实际名称（文件名+后缀名）
 
-3.���ʹ��chrome����������ܻ���ֳ�ʼ��ʱҳ����ʽû��Ⱦ��������console�������������
-�����
-��Ҫ������->flash������flash���еĵ�ǰ��ַ���ӽ����������ҵ��� http://localhost:8080
+3.如果使用chrome浏览器，可能会出现初始化时页面样式没渲染出来，但console不报错的情况。
+解决：
+需要在设置->flash把允许flash运行的当前网址添加进来，比如我的是 http://localhost:8080
