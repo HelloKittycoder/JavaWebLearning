@@ -1,11 +1,10 @@
 package com.kittycoder.action;
 
-import com.kittycoder.po.PageResult;
-import com.opensymphony.xwork2.ActionSupport;
-
 import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.Map;
+
+import com.kittycoder.po.PageResult;
+import com.opensymphony.xwork2.ActionSupport;
 
 /**
  * Created by shucheng on 2018/4/16.
@@ -22,7 +21,7 @@ public class MapAction {
             }
             // 生成HashMap
             HashMap<String, String> stringHashMap = new HashMap<String, String>();
-            stringHashMap.put("one","张三");
+            stringHashMap.put("one","张三1");
             stringHashMap.put("two","李四");
             stringHashMap.put("three","王五");
             stringHashMap.put("four","赵六");
