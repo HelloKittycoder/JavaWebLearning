@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <package name="strutsDemo" extends="json-default" namespace="/datadisplay">
+        <!-- 测试struts2在前台接收object数据 -->
+        <action name="testObject" class="com.kittycoder.datadisplay.action.ObjectAction" method="testObject">
+            <result name="success">/datadisplay/objectDemo.jsp</result>
+        </action>
+        <!-- 测试struts2在前台接收map数据 -->
+        <action name="testMap" class="com.kittycoder.datadisplay.action.MapAction" method="testMap">
+            <result name="success">/datadisplay/mapDemo.jsp</result>
+        </action>
+        <!-- 测试struts2在前台接收list数据 -->
+        <action name="testList" class="com.kittycoder.datadisplay.action.ListAction" method="testList">
+            <result name="success">/datadisplay/listDemo.jsp</result>
+            <result name="jsonData" type="json"></result>
+        </action>
+    </package>
+</struts>
