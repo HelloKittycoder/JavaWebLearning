@@ -1,5 +1,7 @@
 package com.kittycoder.easydemo;
 
+import org.apache.poi.hssf.util.HSSFColor;
+import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.*;
 
@@ -56,6 +58,62 @@ public class CellStyle {
         row.setHeight((short)800); // 设置第8行的行高为800
 
         // 设置单元格内容底部居右
+        XSSFCellStyle style3 = workbook.createCellStyle();
+        style3.setAlignment(XSSFCellStyle.ALIGN_RIGHT);
+        style3.setVerticalAlignment(XSSFCellStyle.VERTICAL_BOTTOM);
+        row = spreadsheet.createRow(8); // 创建第9行
+        cell = row.createCell(3); // 创建第9行D列
+        cell.setCellValue("Bottom Right");
+        cell.setCellStyle(style3);
+        spreadsheet.setColumnWidth(3, 8000); // 将电子表格D列的宽度设置为8000
+        row.setHeight((short)1000);
+
+        // 设置单元格内容水平垂直均为两端对齐
+        XSSFCellStyle style4 = workbook.createCellStyle();
+        style4.setAlignment(XSSFCellStyle.ALIGN_JUSTIFY);
+        style4.setAlignment(XSSFCellStyle.VERTICAL_JUSTIFY);
+        row = spreadsheet.createRow(9); // 创建第10行
+        cell = row.createCell(3); // 创建第10行D列
+        cell.setCellValue("Justified Alignment");
+        cell.setCellStyle(style4);
+        row.setHeight((short) 1000);
+
+        // 设置单元格的边框线颜色
+        row = spreadsheet.createRow(10); // 创建第11行
+        row.setHeight((short) 800); // 设置行高为800
+        cell = row.createCell(1); // 创建第11行B列
+        cell.setCellValue("BORDER");
+        XSSFCellStyle style5 = workbook.createCellStyle();
+        style5.setBorderBottom(XSSFCellStyle.BORDER_THICK); // 设置底边框的线宽
+        style5.setBottomBorderColor(IndexedColors.BLUE.getIndex()); // 设置底边框的颜色
+        style5.setBorderLeft(XSSFCellStyle.BORDER_DOUBLE); // 设置左边框为双线
+        style5.setLeftBorderColor(IndexedColors.GREEN.getIndex()); // 设置左边框的颜色
+        style5.setBorderRight(XSSFCellStyle.BORDER_HAIR); // 设置右边框为点线（dot border）
+        style5.setRightBorderColor(IndexedColors.RED.getIndex()); // 设置右边框的颜色
+        style5.setBorderTop(XSSFCellStyle.BIG_SPOTS); // 设置上边框为粗点线（large spots）
+        style5.setTopBorderColor(IndexedColors.CORAL.getIndex()); // 设置上边框的颜色
+        cell.setCellStyle(style5);
+
+        // 设置单元格的填充色
+        row = spreadsheet.createRow(11); // 创建第12行
+        cell = row.createCell(1); // 创建第12行A列
+        cell.setCellValue("FILL BACKGROUND/FILL PATTERN");
+        XSSFCellStyle style6 = workbook.createCellStyle();
+        style6.setFillBackgroundColor(HSSFColor.LEMON_CHIFFON.index); // 设置填充背景色（柠檬雪纺色）
+        style6.setFillPattern(XSSFCellStyle.LESS_DOTS); // 设置填充形式为稀疏点
+        style6.setAlignment(XSSFCellStyle.ALIGN_FILL); // 填充后水平对齐
+        spreadsheet.setColumnWidth(1, 8000); // 设置B列的列宽为8000
+        cell.setCellStyle(style6);
+
+        // 设置单元格的前景色
+        row = spreadsheet.createRow(12); // 创建第13行
+        cell = row.createCell((short)1); // 创建13行B列
+        cell.setCellValue("FILL FOREGROUND/FILL PATTERN");
+        XSSFCellStyle style7 = workbook.createCellStyle();
+        style7.setFillForegroundColor(HSSFColor.BLUE.index); //　设置填充前景色（蓝色）
+        style7.setFillPattern(XSSFCellStyle.LESS_DOTS); // 设置填充形式为稀疏点
+        style7.setAlignment(XSSFCellStyle.ALIGN_FILL); // 填充后水平对齐
+        cell.setCellStyle(style7);
 
         // 将数据通过文件流写入硬盘
         FileOutputStream out = new FileOutputStream(new File("cellstyle.xlsx"));
