@@ -53,6 +53,7 @@ public class ExcelReportTest {
             String templatePath = projectPath + "\\template\\studentInfo.xls"; // 模版文件路径
             File outputFile = new File("导出学生信息表.xls");
             ExcelUtils.export(templatePath, new FileOutputStream(outputFile));
+            System.out.println("文件导出成功！");
         } catch (Exception e) {
             e.printStackTrace();
         }
