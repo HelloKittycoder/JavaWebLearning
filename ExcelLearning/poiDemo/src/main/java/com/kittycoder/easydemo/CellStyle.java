@@ -18,10 +18,10 @@ public class CellStyle {
         XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFSheet spreadsheet = workbook.createSheet("cellstyle");
 
-        XSSFRow row = spreadsheet.createRow(1);
+        XSSFRow row = spreadsheet.createRow(1); // 创建第2行
         row.setHeight((short) 800);
 
-        XSSFCell cell = (XSSFCell) row.createCell((short)1); // 创建第2行
+        XSSFCell cell = (XSSFCell) row.createCell((short)1); // 创建第2行B列
         cell.setCellValue("test of merging"); // 测试单元格合并
         spreadsheet.addMergedRegion(new CellRangeAddress(
                 1, // 起始行
