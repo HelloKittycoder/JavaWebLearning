@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+        "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+
+<struts>
+    <package name="studentMgmt" extends="json-default">
+        <action name="findAll" class="com.kittycoder.action.StudentAction" method="findAll">
+            <result name="success">/studentMgmt/listStudent.jsp</result>
+        </action>
+        <action name="findStudentById" class="com.kittycoder.action.StudentAction" method="findStudentById">
+            <result name="success">/studentMgmt/updateStudent.jsp</result>
+        </action>
+        <action name="insertStudent" class="com.kittycoder.action.StudentAction" method="insertStudent">
+            <result name="success" type="redirectAction">findAll</result>
+        </action>
+        <action name="updateStudent" class="com.kittycoder.action.StudentAction" method="updateStudent">
+            <result name="success" type="redirectAction">findAll</result>
+        </action>
+        <action name="deleteStudent" class="com.kittycoder.action.StudentAction" method="deleteStudent">
+            <result name="success" type="redirectAction">findAll</result>
+        </action>
+    </package>
+</struts>

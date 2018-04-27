@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap     PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"     "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="Student">
+    <typeAlias alias="Student" type="com.kittycoder.po.Student"/>
+
+    <!-- 查全部 -->
+    <select id="findAll" resultClass="Student">
+        select * from student
+    </select>
+
+    <!-- 根据id查询 -->
+    <select id="findById" parameterClass="java.lang.Integer" resultClass="Student">
+        select * from student where id = #id#
+    </select>
+
+    <!-- 新增 -->
+    <insert id="insertStudent" parameterClass="Student">
+        insert into student(name, age, sex, regtime)
+        values(#name#, #age#, #sex#, #regtime#)
+    </insert>
+
+    <!-- 修改 -->
+    <update id="updateStudent" parameterClass="Student">
+        update student set name=#name#, age=#age#, sex=#sex#
+        where id=#id#
+    </update>
+
+    <!-- 删除 -->
+    <delete id="deleteStudent" parameterClass="java.lang.Integer">
+        delete from student where id = #id#
+    </delete>
+</sqlMap>
