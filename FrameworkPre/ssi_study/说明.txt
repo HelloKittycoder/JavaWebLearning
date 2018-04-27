@@ -1,0 +1,1 @@
+ssi框架（struts2,spring,ibatis）整合的demo
