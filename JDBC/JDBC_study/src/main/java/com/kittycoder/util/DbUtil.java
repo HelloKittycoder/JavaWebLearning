@@ -125,6 +125,10 @@ public class DbUtil {
         }
     }
 
+     /**
+     * 测试updateBatchByFile方法
+     * @param args
+     */
     public static void main(String[] args) {
         DbUtil.getConnection("com.mysql.jdbc.Driver",
                 "jdbc:mysql://localhost:3306/guan?useUnicode=true&characterEncoding=UTF8",
