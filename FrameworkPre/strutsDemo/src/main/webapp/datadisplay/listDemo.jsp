@@ -14,7 +14,7 @@
 </head>
 <body>
 <input type="hidden" id="path" value="${pageContext.request.contextPath}"/>
-<h3>获取List的每个对象</h3>
+<h3>获取List的每个对象（method1）</h3>
 <table cellpadding="0" cellspacing="0" class="result-table">
     <thead>
         <th>学生id</th>
@@ -33,6 +33,27 @@
         </s:iterator>
     </tbody>
 </table>
+
+<h3>获取List的每个对象（method2）</h3>
+<table cellpadding="0" cellspacing="0" class="result-table">
+    <thead>
+    <th>学生id</th>
+    <th>学生姓名</th>
+    <th>学生生日</th>
+    <th>学生年龄</th>
+    </thead>
+    <tbody>
+    <s:iterator value="studentList" status="status">
+        <tr <s:if test="#status.count%2==0">bgcolor="#F2F2F2" </s:if>>
+            <td>${studentList[status.index].sid}</td>
+            <td>${studentList[status.index].sname}</td>
+            <td>${studentList[status.index].sbirthday}</td>
+            <td>${studentList[status.index].sage}</td>
+        </tr>
+    </s:iterator>
+    </tbody>
+</table>
+
 <h3>获取下拉列表项（method1）</h3>
 <s:select list="provinceList" listKey="key" listValue="value" emptyOption="true"></s:select>
 
