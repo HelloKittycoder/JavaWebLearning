@@ -1,6 +1,8 @@
-JDBCDemoTest	�򵥵�JDBC��ɾ�Ĳ�
+com.kittycoder.easydemo
 
-JDBCDemo01Testʹ����DbUtil
-		1.��JDBC��ɾ�Ĳ����˼򵥵ķ�װ�������������
-		2.updateBatchByFile====ͨ���ļ���txt��sql�ȣ���ȡÿ����䣨insert��update��delete����䲻�ֶܷ���д��Ҫһ��д�꣩��
-		һ��һ��һ�䣬�������ݿ���£��������޸ģ�ɾ���� ���
+JDBCDemoTest	简单的JDBC增删改查
+
+JDBCDemo01Test使用了DbUtil
+		1.对JDBC增删改查作了简单的封装，减少冗余代码
+		2.updateBatchByFile====通过文件（txt，sql等）读取每行语句（insert，update，delete等语句不能分多行写，要一行写完），
+		一次一行一句，进行数据库更新（新增，修改，删除） ★★
