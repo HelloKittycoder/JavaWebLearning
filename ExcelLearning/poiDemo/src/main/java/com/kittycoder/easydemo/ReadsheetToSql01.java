@@ -16,7 +16,7 @@ import java.util.Iterator;
 
 /**
  * Created by shucheng on 2018/4/19.
- * 09 从电子表格中读取数据（封装的工具类）
+ * 09 根据excel内容生成插入sql（封装的工具类）
  */
 public class ReadsheetToSql01 {
 
