@@ -15,7 +15,7 @@ public class SendEmail {
 
     public static void main(String[] args) {
         // 收件人地址
-        String to = "from@qq.com";
+        String to = "to@qq.com";
 
         // 发件人地址
         String from = "from@outlook.com";
