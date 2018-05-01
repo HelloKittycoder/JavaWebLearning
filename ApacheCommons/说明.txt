@@ -1,2 +1,2 @@
 Apache Commons工具类库学习（参考http://www.cnblogs.com/ITtangtang/p/3966955.html）
-01 commons-dbtils JDBC工具类库
+01 commons-dbutils JDBC工具类库，简化数据库操作
