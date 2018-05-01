@@ -9,6 +9,7 @@ import java.util.Properties;
  * Created by shucheng on 2018/5/1.
  * JavaMail API 发送简单的电子邮件
  * 参考：https://www.yiibai.com/javamail_api/javamail_api_sending_simple_email.html
+ * https://www.cnblogs.com/ysocean/p/7666061.html
  */
 public class SendEmail {
 
