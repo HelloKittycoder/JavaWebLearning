@@ -1,0 +1,14 @@
+有两种方式在spring中配置quartz
+方式一（applicationContext.xml）：更灵活
+在配置文件里定义任务类和要执行的方法，类和方法仍然是普通类
+https://www.cnblogs.com/shizhijie/p/8243934.html
+
+
+方式二（applicationContext1.xml）：
+使用JobDetailBean，任务类必须实现Job接口
+http://kevin19900306.iteye.com/blog/1397744
+
+
+使用说明：
+要切换两种方式，只需要在web.xml中将context-param的param-value，
+换成相应的配置文件即可

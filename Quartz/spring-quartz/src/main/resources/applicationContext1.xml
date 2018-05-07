@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 任务调度配置方式二 （参考 http://kevin19900306.iteye.com/blog/1397744） -->
+    <!-- 使用JobDetailBean，任务类必须实现Job接口 -->
+    <bean id="myjob" class="org.springframework.scheduling.quartz.JobDetailBean">
+        <property name="name" value="exampleJob"></property>
+        <property name="jobClass" value="com.kittycoder.easydemo.SpringQuartz"></property>
+        <property name="jobDataAsMap">
+            <map>
+                <entry key="service">
+                    <value>simple is the beat</value>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+    <!-- 调度触发器 -->
+    <bean id="CronTriggerBean" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="myjob"></property>
+        <property name="cronExpression">
+            <!-- 每隔5秒触发一次 -->
+            <value>0/5 * * * * ?</value>
+        </property>
+    </bean>
+
+    <!-- 调度工厂 -->
+    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="CronTriggerBean"/>
+            </list>
+        </property>
+    </bean>
+</beans>
