@@ -1,0 +1,5 @@
+简单的jetty启动jersey的demo
+说明：
+不需要额外配置web服务器，main方法启动即可
+
+参考链接：https://blog.csdn.net/tornadojava/article/details/53609112
