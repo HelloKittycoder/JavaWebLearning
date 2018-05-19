@@ -15,11 +15,11 @@
     </properties>
 
     <dependencies>
-        <dependency>
+        <!--<dependency>
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging</artifactId>
             <version>1.2</version>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>com.sun.jersey</groupId>

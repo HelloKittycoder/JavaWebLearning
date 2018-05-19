@@ -2,8 +2,6 @@ package com.kittycoder.easydemo;
 
 import com.sun.jersey.api.core.PackagesResourceConfig;
 import com.sun.jersey.spi.container.servlet.ServletContainer;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
@@ -16,7 +14,7 @@ import org.eclipse.jetty.servlet.ServletHolder;
  */
 public class JerseyApp {
 
-    private final Log log = LogFactory.getLog(getClass());
+    // private final Log log = LogFactory.getLog(getClass());
 
     public static void main(String[] args) throws Exception {
         final Server server = new Server(9999);
