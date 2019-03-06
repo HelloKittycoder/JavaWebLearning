@@ -1,7 +1,10 @@
 ﻿#JsonLib学习
 
-1.net.sf
-以下来源于 https://www.cnblogs.com/jswang/p/7927405.html
+1.net.sf NetSfJsonTest.java
+参考： https://www.cnblogs.com/jswang/p/7927405.html
+
+2.fastJson FastJsonTest.java
+参考： https://blog.csdn.net/sinat_36596988/article/details/81182070
 
 序号 | 测试方法 | 说明 
 :---: | :------- | :-------- 
