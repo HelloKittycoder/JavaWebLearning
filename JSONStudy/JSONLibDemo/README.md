@@ -6,8 +6,7 @@
 
 2.fastJson
 [FastJsonTest.java](https://github.com/HelloKittycoder/JavaWebLearning/blob/master/JSONStudy/JSONLibDemo/src/main/java/com/kittycoder/easydemo/FastJsonTest.java)  
-参考： https://github.com/alibaba/fastjson/
-
+参考： https://github.com/alibaba/fastjson/  
 https://blog.csdn.net/sinat_36596988/article/details/81182070
 
 序号 | 测试方法 | 说明 
