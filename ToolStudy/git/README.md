@@ -47,17 +47,16 @@ git push origin master
 使用命令行如何操作？使用sparse-checkout  
 （参考链接：https://blog.csdn.net/zzh920625/article/details/77073816）  
 步骤：  
-a.找个地方（比如D盘根目录）创建个文件夹aa，mkdir aa
+a.找个地方（比如D盘根目录）创建个文件夹aa，mkdir aa  
 b.初始化git仓库，创建一个空仓库 git init
 c.获取远程仓库（比如：https://github.com/zhangsan/myFrameWorkStudy.git）的所有对象，但不checkout到本地，  
 同时将远程git server url加到git config文件中，如果项目比较大的话，这个过程可能会比较耗时  
 git remote add -f origin https://github.com/zhangsan/myFrameWorkStudy.git  
 d.在config中允许使用sparse checkout模式（即设置成可以下载指定文件夹，该设置仅对该仓库有效，不是本地git的全局设置）  
-git config core.sparseCheckout true
+git config core.sparseCheckout true  
 e.将需要下载工程名称所在目录写到配置文件中（定义实际检出的文件/文件夹）  
 echo "mybatis01">>.git/info/sparse-checkout  
 如果我还要将workflow/Camunda文件夹下的内容下载过来，  
 echo "workflow/Camunda">>.git/info/sparse-checkout  
 f.执行拉取操作（将远程指定分支的文件夹拉取到本地）  
 git pull origin master
-
