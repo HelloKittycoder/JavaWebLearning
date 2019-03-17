@@ -34,7 +34,10 @@ git config --global user.name "zhangsan"
 提交前可以先查看下本地仓库所处的分支（git branch）  
 git push origin master  
 如果第一次安装使用，会要你输入用户名和密码（就是你在github注册时填写的邮箱和  
-密码），正确录入后就推送成功了
+密码），正确录入后就推送成功了  
+
+7.将远程仓库的master分支的代码更新到本地仓库  
+git pull origin master
 
 三、常见问题  
 1.我在本地删除了mybatis01文件夹以及子文件夹下的所有内容（使用rm命令，不是git rm；或者shift+delete），  
