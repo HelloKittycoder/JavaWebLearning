@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：理解成实现类的全路径（包名+类名） -->
+<mapper namespace="a.b">
+<!--<mapper namespace="com.bjsxt.mapper.FlowerMapper">-->
+    <!-- id:方法名 -->
+    <select id="selectAll" resultType="com.bjsxt.pojo.Flower">
+        select id, name, price, production from flower
+    </select>
+
+    <select id="selectById" resultType="com.bjsxt.pojo.Flower">
+        <!-- select count(*) from flower -->
+        select * from flower where id = 1
+    </select>
+
+    <select id="c" resultType="com.bjsxt.pojo.Flower">
+        select * from flower
+    </select>
+</mapper>
