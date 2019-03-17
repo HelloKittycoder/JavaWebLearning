@@ -1,4 +1,4 @@
-package com.bjsxt.servlet;
+﻿package com.bjsxt.servlet;
 
 import com.bjsxt.pojo.Flower;
 import com.bjsxt.service.FlowerService;
@@ -16,7 +16,7 @@ import java.io.IOException;
  * Create by Administrator on 2019/3/16
  */
 @WebServlet("/insert")
-public class InertServlet extends HttpServlet {
+public class InsertServlet extends HttpServlet {
 
     private FlowerService flowerService = new FlowerServiceImpl();
 
