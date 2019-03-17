@@ -1,5 +1,5 @@
 git学习  
-一、准备工作
+一、准备工作  
 1.工具下载：windows下操作git，可下载git for windows  
 
 二、命令学习  
@@ -35,3 +35,10 @@ git config --global user.name "zhangsan"
 git push origin master  
 如果第一次安装使用，会要你输入用户名和密码（就是你在github注册时填写的邮箱和  
 密码），正确录入后就推送成功了
+
+三、常见问题
+1.我在本地删除了mybatis01文件夹以及子文件夹下的所有内容（使用rm命令，不是git rm；或者shift+delete），  
+这时还处于未提交状态，使用命令行该如何恢复？  
+（参考链接：https://www.cnblogs.com/qlqwjy/p/8378851.html）  
+比如mybatis01文件夹下有个文件aaa.txt，就使用 git checkout -- aaa.txt，但这个文件夹下有很多文件，  
+总不可能一个个文件写一条命令吧。这时可以使用 git checkout -- '*.*'来撤销之前所做的操作
