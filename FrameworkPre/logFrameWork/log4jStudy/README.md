@@ -5,7 +5,7 @@ log4j
 （在命令行界面才能看见），不容易观察一些输出结果  
 （2）log4作用：不仅能把内容输出到控制台，还能把内容输出到文件中，便于观察结果  
 3.使用步骤：  
-（1）导入log4j-xxx.jar
+（1）导入log4j-xxx.jar  
 （2）在src下新建log4j.properties（路径和名称不允许改变），这个是在eclipse下；  
 如果用idea，就在resources下创建properties文件  
 4.log4j日志级别
