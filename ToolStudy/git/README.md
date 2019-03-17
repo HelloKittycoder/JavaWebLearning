@@ -51,7 +51,7 @@ git pull origin master
 （参考链接：https://blog.csdn.net/zzh920625/article/details/77073816）  
 步骤：  
 a.找个地方（比如D盘根目录）创建个文件夹aa，mkdir aa  
-b.初始化git仓库，创建一个空仓库 git init
+b.初始化git仓库，创建一个空仓库 git init  
 c.获取远程仓库（比如：https://github.com/zhangsan/myFrameWorkStudy.git）的所有对象，但不checkout到本地，  
 同时将远程git server url加到git config文件中，如果项目比较大的话，这个过程可能会比较耗时  
 git remote add -f origin https://github.com/zhangsan/myFrameWorkStudy.git  
