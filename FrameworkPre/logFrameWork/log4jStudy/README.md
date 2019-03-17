@@ -16,6 +16,7 @@ log4j.rootCategory=INFO, CONSOLE
 （1）在第一行中控制输出目的地  
 CONSOLE, LOGFILE（这个表示向控制台和文件中输出）  
 6.pattern中常用的几个表达式  
+参考链接：https://blog.csdn.net/hello_word2/article/details/79295344
 （1）%C 包名+类名  
 （2）%d{YYYY-MM-dd HH:mm:ss} 时间  
 （3）%L 行号  
