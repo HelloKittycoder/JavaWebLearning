@@ -41,7 +41,7 @@ git push origin master
 这时还处于未提交状态，使用命令行该如何恢复？  
 （参考链接：https://www.cnblogs.com/qlqwjy/p/8378851.html）  
 比如mybatis01文件夹下有个文件aaa.txt，就使用 git checkout -- aaa.txt，但这个文件夹下有很多文件，  
-总不可能一个个文件写一条命令吧。这时可以使用 git checkout -- '*.*'来撤销之前所做的操作  
+总不可能一个个文件写一条命令吧。这时可以使用 git checkout -- '\*.*'来撤销之前所做的操作  
 
 2.myFrameWorkStudy.git仓库下有mybatis01和mybatis02两个工程，我只想把mybatis01下载到本地，  
 使用命令行如何操作？使用sparse-checkout  
