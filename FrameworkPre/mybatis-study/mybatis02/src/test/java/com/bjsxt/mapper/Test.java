@@ -37,12 +37,16 @@ public class Test {
         // 2.查询单个对象
         /*int count = session.selectOne("a.b.selectById");
         System.out.println(count);*/
-        /*Flower flower = session.selectOne("a.b.selectById");
-        System.out.println(flower);*/
+        Flower flower = session.selectOne("a.b.selectById");
+        // System.out.println(flower);
 
         // 3.返回map
         /*Map<Object, Object> map = session.selectMap("a.b.c", "name");
         System.out.println(map);*/
+
+        // 调用a.j类中的查询语句
+        flowerList = session.selectList("a.j.selectAll");
+        flower = session.selectOne("a.j.selectById");
         session.close();
     }
 }
