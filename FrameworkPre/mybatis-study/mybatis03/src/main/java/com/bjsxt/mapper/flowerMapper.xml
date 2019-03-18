@@ -13,4 +13,8 @@
     <select id="selectById2" parameterType="map" resultType="com.bjsxt.pojo.Flower">
         select * from flower where id = #{id} and name = #{name}
     </select>
+    <!-- 分页查询 -->
+    <select id="page" parameterType="map" resultType="com.bjsxt.pojo.Flower">
+        select * from flower limit #{pageStart},#{pageSize}
+    </select>
 </mapper>
