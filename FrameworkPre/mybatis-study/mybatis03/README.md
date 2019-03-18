@@ -25,3 +25,23 @@
 ```
 <![CDATA[ 内容 ]]>
 ```
+5. mybatis中实现mysql分页写法  
+1）?不允许在关键字前后进行数学运算，需要在代码中计算完成后传递到mapper.xml中  
+2）在java代码中计算
+```java
+  Map<String, Object> map = new HashMap<>();
+  // 显示几个
+  int pageSize = 2;
+  // 第几页
+  int pageNumber = 2;
+  map.put("pageStart", (pageNumber-1)*pageSize);
+  map.put("pageSize", pageSize);
+  List<Flower> flowerList = session.selectList("a.b.page", map);
+  System.out.println(flowerList);
+```
+3) 在mapper.xml中的代码
+  ```xml
+  <select id="page" parameterType="map" resultType="com.bjsxt.pojo.Flower">
+      select * from flower limit #{pageStart},#{pageSize}
+  </select>
+  ```
