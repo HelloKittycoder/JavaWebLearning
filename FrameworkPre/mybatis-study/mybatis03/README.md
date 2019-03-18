@@ -48,26 +48,26 @@
 6. typeAlias别名  
 1） 系统内置别名：把类型全小写  
 2） 给某个类起别名  
-  a.alias="自定义"
+  a.alias="自定义"  
   ```xml
   <typeAliases>
      <typeAlias type="com.bjsxt.pojo.Flower" alias="flower"/>
   </typeAliases>
   ```
-  b.mapper.xml中用flower引用Flower类
+  b.mapper.xml中用flower引用Flower类  
   ```xml
   <select id="page" parameterType="map" resultType="flower">
       select * from flower limit #{pageStart},#{pageSize}
   </select>
   ```
 3） 直接给某个包下所有类起别名，别名为类名，不区分大小写  
-  a. mybatis.xml中配置
+  a. mybatis.xml中配置  
   ```xml
   <typeAliases>
      <package type="com.bjsxt.pojo"/>
   </typeAliases>
   ```
-  b. mapper.xml中通过类名引用
+  b. mapper.xml中通过类名引用  
   ```xml
   <select id="page" parameterType="map" resultType="Flower">
       select * from flower limit #{pageStart},#{pageSize}
