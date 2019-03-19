@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：理解成实现类的全路径（包名+类名） -->
+<mapper namespace="a.b">
+    <!-- 分页查询 -->
+    <select id="pageList" parameterType="map" resultType="Flower">
+        select * from flower limit #{pageStart},#{pageSize}
+    </select>
+    
+    <select id="pageCount" resultType="int">
+        select count(*) from flower
+    </select>
+</mapper>
