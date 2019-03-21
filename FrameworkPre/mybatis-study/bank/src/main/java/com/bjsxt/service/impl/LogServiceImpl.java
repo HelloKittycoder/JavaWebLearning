@@ -40,6 +40,7 @@ public class LogServiceImpl implements LogService {
 
         pageInfo.setTotal(count%pageSize==0 ? count/pageSize : count/pageSize+1);
         pageInfo.setList(list);
+        session.close();
         return pageInfo;
     }
 }
