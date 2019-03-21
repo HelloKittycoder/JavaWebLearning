@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：理解成实现类的全路径（包名+类名） -->
+<mapper namespace="com.bjsxt.mapper.LogMapper">
+
+    <!-- 查询全部数据 -->
+    <select id="selAll" resultType="log">
+        select * from log
+    </select>
+
+    <!-- 根据付款收款账号查询日志（当多参数时，不需要写parameterType） -->
+    <select id="selByAccInAccOut" resultType="log">
+        <!-- 参数上没写Param注解时 -->
+        <!-- select * from log where accin=#{0} and accout=#{1} -->
+        <!-- select * from log where accin=#{param1} and accout=#{param2} -->
+        <!-- 参数上写了Param注解时 -->
+        select * from log where accin=#{accIn} and accout=#{accOut}
+    </select>
+
+</mapper>
