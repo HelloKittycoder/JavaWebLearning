@@ -110,16 +110,15 @@ suffixOverrides  | 去掉后面内容
 （1） 作用：  
 ① 循环参数内容  
 ② 在内容的前后添加内容  
-③ 在内容之间添加分隔符
-（2）使用场景：in查询，批量新增
-（mybatis中foreach效率比较低）
+③ 在内容之间添加分隔符  
+（2）使用场景：in查询，批量新增（mybatis中foreach效率比较低）  
 如果希望批量新增：  
 a. sql语句（mysql）  
   ```sql
     insert into log values
     (default,1,2,3),(default,2,3,4),(default,3,4,5)
   ```
-b.openSession()需要指定（最好指定下，虽然不指定不会报错）  
+b. openSession()需要指定（最好指定下，虽然不指定不会报错）  
   ```java
   // 底层用的是JDBC的PepareStatement.addBatch();
     factory.openSession(ExecutorType.BATCH);
