@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：理解成实现类的全路径（包名+类名） -->
+<mapper namespace="com.bjsxt.mapper.LogMapper">
+
+    <!-- 测试if标签 -->
+    <!-- 根据付款收款账号查询日志（当多参数时，不需要写parameterType） -->
+    <select id="testIf" resultType="log">
+        select * from log where 1=1
+        <!-- ognl表达式，直接写key或对象的属性，不需要添加任何特殊符号 -->
+        <if test="accIn!=null and accIn!=''">
+            and accin=#{accIn}
+        </if>
+        <if test="accOut!=null and accOut!=''">
+            and accout=#{accOut}
+        </if>
+    </select>
+
+    <!-- 测试where标签
+     where作用：如果where标签中无内容，则不生成where关键字；如果有内容，则去掉最后一个逗号，同时在开头加上一个where
+     -->
+    <!-- 根据付款收款账号查询日志（当多参数时，不需要写parameterType） -->
+    <select id="testWhere" resultType="log">
+        select * from log
+        <where>
+            <if test="accIn!=null and accIn!=''">
+                and accin=#{accIn}
+            </if>
+            <if test="accOut!=null and accOut!=''">
+                and accout=#{accOut}
+            </if>
+        </where>
+    </select>
+
+    <!-- 测试choose，when，otherwise标签 -->
+    <!-- 根据付款收款账号查询日志（当多参数时，不需要写parameterType） -->
+    <select id="testChoose" resultType="log">
+        select * from log
+        <where>
+            <choose>
+                <when test="accIn!=null and accIn!=''">
+                    and accin=#{accIn}
+                </when>
+                <when test="accOut!=null and accOut!=''">
+                    and accout=#{accOut}
+                </when>
+            </choose>
+        </where>
+    </select>
+
+    <!-- 测试set标签
+     set作用：如果set标签中无内容，则不生成set关键字；如果有内容，则去掉最后一个逗号，同时在开头加上一个set
+     -->
+    <!-- id=#{id}
+    目的：防止<set>里面没有内容，mybatis不生成set关键字；如果修改中没有set从句，会造成sql语法错误 -->
+    <update id="testSet" parameterType="log">
+        update log
+        <set>
+            id=#{id},
+            <if test="accIn!=null and accIn!=''">
+                accin=#{accIn},
+            </if>
+            <if test="accOut!=null and accOut!=''">
+                accout=#{accOut},
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+
+    <!-- 测试trim标签
+        trim作用：先做去除操作，然后做添加操作
+     -->
+    <select id="testTrim1" parameterType="log" resultType="log">
+        select * from log
+        <!-- 如果内容不为空，则去掉开头的and，然后在开头加上where -->
+        <!--<trim prefix="where" prefixOverrides="and">
+            and accin=#{accIn}
+        </trim>-->
+        <trim prefix="abc" prefixOverrides="abc">
+            abc
+        </trim>
+    </select>
+
+    <!-- 用trim模拟set标签的功能 -->
+    <update id="testTrim2" parameterType="log">
+        update log
+        <!-- 去掉末尾的逗号，然后在开头加上set -->
+        <trim prefix="set" suffixOverrides=",">
+            a=a,
+        </trim>
+        where id=100
+    </update>
+
+    <!-- bind标签
+     作用：给已经传过来的值前后添加符号
+     使用场景：模糊查询
+     -->
+    <select id="testBind" parameterType="log" resultType="log">
+        <bind name="accIn" value="'%'+accIn+'%'"/>
+        select * from log where accin like #{accIn}
+    </select>
+
+    <!-- foreach标签
+     使用场景：in查询，批量新增
+     -->
+    <select id="testForEach1" parameterType="list" resultType="log">
+        select * from log where id in
+        <foreach collection="list" item="abc" open="(" close=")" separator=",">
+            #{abc}
+        </foreach>
+    </select>
+
+    <!-- 批量插入和单条插入对比 -->
+    <insert id="testForEach2" parameterType="list">
+        insert into log values
+        <foreach collection="list" item="log" separator=",">
+            (default,#{log},2,200)
+        </foreach>
+    </insert>
+
+    <insert id="testForEach3" parameterType="int">
+        insert into log values (default,#{accOut},2,200)
+    </insert>
+
+    <select id="testInclude" resultType="log">
+        select <include refid="commonColumns"></include> from log
+    </select>
+    <sql id="commonColumns">
+        id, accout, accin, money
+    </sql>
+</mapper>
