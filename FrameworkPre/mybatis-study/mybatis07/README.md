@@ -76,13 +76,15 @@ b. mybatis中的动态sql：需要在mapper.xml中添加逻辑判断
   ```
 5. trim标签  
 （1） 各属性的含义：  
+
 属性  | 含义
 ------------- | -------------
 prefix  | 在前面添加内容
 prefixOverrides  | 去掉前面添加内容
 suffix  | 在后面添加内容
 suffixOverrides  | 去掉后面内容
-（2） 执行顺序：先去掉内容后添加内容
+
+（2） 执行顺序：先去掉内容后添加内容  
 （3） 使用示例：  
   ```xml
     <update id="testTrim2" parameterType="log">
@@ -123,6 +125,7 @@ b.openSession()需要指定（最好指定下，虽然不指定不会报错）
     factory.openSession(ExecutorType.BATCH);
   ```
 （3） 使用示例：  
+
 属性  | 含义
 ------------- | -------------
 collection  | 要遍历的集合
