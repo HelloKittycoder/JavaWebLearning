@@ -125,6 +125,7 @@
         insert into log values (default,#{accOut},2,200)
     </insert>
 
+    <!-- 测试sql,include标签 -->
     <select id="testInclude" resultType="log">
         select <include refid="commonColumns"></include> from log
     </select>
