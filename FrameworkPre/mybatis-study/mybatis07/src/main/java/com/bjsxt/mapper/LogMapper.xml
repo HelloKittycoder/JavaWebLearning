@@ -19,7 +19,8 @@
     </select>
 
     <!-- 测试where标签
-     where作用：如果where标签中无内容，则不生成where关键字；如果有内容，则去掉最后一个逗号，同时在开头加上一个where
+     where作用：如果where标签中无内容，则不生成where关键字；
+     如果有内容，则去掉开头的and，去掉最后一个逗号，同时在开头加上一个where）
      -->
     <!-- 根据付款收款账号查询日志（当多参数时，不需要写parameterType） -->
     <select id="testWhere" resultType="log">
