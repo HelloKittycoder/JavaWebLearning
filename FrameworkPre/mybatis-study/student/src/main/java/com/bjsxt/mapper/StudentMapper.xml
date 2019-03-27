@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：理解成实现类的全路径（包名+类名） -->
+<mapper namespace="com.bjsxt.mapper.StudentMapper">
+
+    <select id="selectPageList" parameterType="pageInfo" resultType="student">
+        select * from student
+        <where>
+            <if test="sname!=null and sname!=''">
+                <bind name="sname" value="'%'+sname+'%'"></bind>
+                and name like #{sname}
+            </if>
+            <if test="tname!=null and tname!=''">
+                <bind name="tname" value="'%'+tname+'%'"></bind>
+                and tid in (select id from teacher where name like #{tname})
+            </if>
+        </where>
+        limit #{pageStart},#{pageSize}
+    </select>
+    
+    <select id="selectPageCount" parameterType="pageInfo" resultType="long">
+        select count(*) from student
+        <where>
+            <if test="sname!=null and sname!=''">
+                <bind name="sname" value="'%'+sname+'%'"></bind>
+                and name like #{sname}
+            </if>
+            <if test="tname!=null and tname!=''">
+                <bind name="tname" value="'%'+tname+'%'"></bind>
+                and tid in (select id from teacher where name like #{tname})
+            </if>
+        </where>
+    </select>
+</mapper>
