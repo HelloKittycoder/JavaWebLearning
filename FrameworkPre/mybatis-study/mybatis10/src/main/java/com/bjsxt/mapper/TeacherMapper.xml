@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：理解成实现类的全路径（包名+类名） -->
+<mapper namespace="com.bjsxt.mapper.TeacherMapper">
+
+    <resultMap id="mymap" type="teacher">
+        <!-- 主键使用id标签配置映射关系 -->
+        <id column="id" property="id"/>
+        <!-- 其他列使用result标签配置映射关系 -->
+        <result column="name" property="name"/>
+    </resultMap>
+    
+    <select id="selectAll" resultMap="mymap">
+        select * from teacher
+    </select>
+    
+    <select id="selectById" parameterType="int" resultType="teacher">
+        select * from teacher where id=#{0}
+    </select>
+</mapper>

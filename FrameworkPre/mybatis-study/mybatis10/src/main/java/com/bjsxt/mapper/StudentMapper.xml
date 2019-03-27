@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：理解成实现类的全路径（包名+类名） -->
+<mapper namespace="com.bjsxt.mapper.StudentMapper">
+
+    <resultMap id="mymap" type="student">
+        <!-- （除下面的文字注释外）要么写下面5行，要么写最后两行 -->
+        <!--<id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="age" property="age"/>-->
+        <result column="tid" property="tid"/>
+        <!-- 如果关联一个对象，使用association；关联集合时，使用collection -->
+        <association property="teacher" select="com.bjsxt.mapper.TeacherMapper.selectById" column="tid"></association>
+    </resultMap>
+    
+    <select id="selectAll" resultMap="mymap">
+        select * from student
+    </select>
+</mapper>
