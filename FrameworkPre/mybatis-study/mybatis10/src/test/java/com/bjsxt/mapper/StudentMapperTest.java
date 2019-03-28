@@ -21,4 +21,14 @@ public class StudentMapperTest extends BaseTest {
         }
         session.close();
     }
+
+    @Test
+    public void testSelectAll1() {
+        SqlSession session = factory.openSession();
+        List<Student> list = session.selectList("com.bjsxt.mapper.StudentMapper.selectAll1");
+        for (Student s : list) {
+            System.out.println(s);
+        }
+        session.close();
+    }
 }

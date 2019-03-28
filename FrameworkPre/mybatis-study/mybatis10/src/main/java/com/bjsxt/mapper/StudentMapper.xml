@@ -5,6 +5,8 @@
 <!-- namespace：理解成实现类的全路径（包名+类名） -->
 <mapper namespace="com.bjsxt.mapper.StudentMapper">
 
+    <!-- 使用resultMap标签实现关联单个对象 -->
+    <!-- A.n+1方式 -->
     <resultMap id="mymap" type="student">
         <!-- （除下面的文字注释外）要么写下面5行，要么写最后两行 -->
         <!--<id column="id" property="id"/>
@@ -17,5 +19,28 @@
     
     <select id="selectAll" resultMap="mymap">
         select * from student
+    </select>
+
+    <!-- B.联合查询方式 -->
+    <resultMap id="mymap1" type="student">
+        <id column="sid" property="id"/>
+        <result column="sname" property="name"/>
+        <result column="age" property="age"/>
+        <result column="tid" property="tid"/>
+        <association property="teacher" javaType="teacher">
+            <id column="tid" property="id"/>
+            <result column="tname" property="name"/>
+        </association>
+    </resultMap>
+    
+    <select id="selectAll1" resultMap="mymap1">
+        select s.id sid,
+            s.name sname,
+            age,
+            t.id tid,
+            t.name tname
+        from student s
+        left join teacher t
+        on s.tid = t.id
     </select>
 </mapper>
