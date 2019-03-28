@@ -132,4 +132,17 @@ public class LoggerMapperTest extends BaseTest {
     public void testInclude() {
         logMapper.testInclude();
     }
+
+    // 测试foreach语句读取map
+    // https://blog.csdn.net/qioutiandeyun/article/details/77188973
+    @Test
+    public void testMapParams() {
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("accIn", "3");
+        params.put("accOut", "1");
+        List<Log> list = logMapper.testMapParams(params);
+        for (Log lg : list) {
+            System.out.println(lg);
+        }
+    }
 }

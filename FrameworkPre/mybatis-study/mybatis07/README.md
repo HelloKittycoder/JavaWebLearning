@@ -155,3 +155,34 @@ separator  | 每次循环时，元素之间的分隔符
         select <include refid="commonColumns"></include> from log
     </select>
   ```
+
+##### 扩展
+1. foreach标签遍历Map参数的数据（https://blog.csdn.net/qioutiandeyun/article/details/77188973）  
+（1） Mapper接口  
+```java
+List<Log> testMapParams(@Param("params") Map<String, String> params);
+```
+（2） Mapper xml  
+```xml
+<select id="testMapParams" parameterType="java.util.Map" resultType="log">
+    <!-- select * from log where accIn = '3' and accOut = '1' -->
+    select * from log
+    <where>
+        <foreach collection="params" index="key" item="value" separator=" and ">
+            ${key} = #{value}
+        </foreach>
+    </where>
+</select>
+```
+（3） 测试使用  
+```java
+public void testMapParams() {
+    Map<String, String> params = new HashMap<String, String>();
+    params.put("accIn", "3");
+    params.put("accOut", "1");
+    List<Log> list = logMapper.testMapParams(params);
+    for (Log lg : list) {
+        System.out.println(lg);
+    }
+}
+```

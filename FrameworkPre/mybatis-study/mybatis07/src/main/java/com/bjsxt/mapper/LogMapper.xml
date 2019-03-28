@@ -132,4 +132,15 @@
     <sql id="commonColumns">
         id, accout, accin, money
     </sql>
+
+    <!-- 测试传map参数 -->
+    <select id="testMapParams" parameterType="java.util.Map" resultType="log">
+        <!-- select * from log where accIn = '3' and accOut = '1' -->
+        select * from log
+        <where>
+            <foreach collection="params" index="key" item="value" separator=" and ">
+                ${key} = #{value}
+            </foreach>
+        </where>
+    </select>
 </mapper>

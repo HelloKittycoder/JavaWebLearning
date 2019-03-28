@@ -4,6 +4,7 @@ import com.bjsxt.pojo.Log;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Create by Administrator on 2019/3/21
@@ -28,4 +29,6 @@ public interface LogMapper {
     int testForEach3(int accOut);
 
     List<Log> testInclude();
+
+    List<Log> testMapParams(@Param("params") Map<String, String> params);
 }
