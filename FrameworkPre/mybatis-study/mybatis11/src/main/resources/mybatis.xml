@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+    <typeAliases>
+        <package name="com.bjsxt.pojo"/>
+    </typeAliases>
+    <!-- default引用environmentId，当前所使用的环境 -->
+    <environments default="default">
+        <!-- 声明可以使用的环境 -->
+        <environment id="default">
+            <!-- 使用原生jdbc事务 -->
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=UTF-8"/>
+                <property name="username" value="root"/>
+                <property name="password" value="123456"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <!-- <package name="com.bjsxt.mapper"/> -->
+        <mapper resource="com/bjsxt/mapper/TeacherMapper.xml"/>
+        <mapper resource="com/bjsxt/mapper/StudentMapper.xml"/>
+    </mappers>
+</configuration>
