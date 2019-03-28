@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：理解成实现类的全路径（包名+类名） -->
+<mapper namespace="com.bjsxt.mapper.StudentMapper">
+
+    <!-- 使用AutoMapping结合别名实现关联单个对象（说明：无法做到关联集合） -->
+    <select id="selectAll" resultType="student">
+        select s.id id,
+            s.name name,
+            age,
+            s.tid,
+            t.id `teacher.id`,
+            t.name `teacher.name`
+        from student s
+        left join teacher t
+        on s.tid = t.id
+    </select>
+</mapper>
