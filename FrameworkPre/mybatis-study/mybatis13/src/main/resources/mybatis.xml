@@ -30,7 +30,7 @@
         <!--<mapper resource="com/bjsxt/mapper/StudentMapper.xml"/>
         <mapper resource="com/bjsxt/mapper/TeacherMapper.xml"/>-->
         <!-- 3.类扫描 -->
-        <!--<mapper class="com.bjsxt.mapper.StudentMapper"/>
-        <mapper class="com.bjsxt.mapper.TeacherMapper"/>-->
+        <mapper class="com.bjsxt.mapper.StudentMapper"/>
+        <mapper class="com.bjsxt.mapper.TeacherMapper"/>
     </mappers>
 </configuration>

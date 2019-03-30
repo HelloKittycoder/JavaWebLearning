@@ -62,4 +62,12 @@ public class TeacherMapperTest extends BaseTest {
         }
         session.commit();
     }
+
+    @Test
+    public void testSelectTeacher() {
+        List<Teacher> list = teacherMapper.selectTeacher();
+        for (Teacher t : list) {
+            System.out.println(t);
+        }
+    }
 }

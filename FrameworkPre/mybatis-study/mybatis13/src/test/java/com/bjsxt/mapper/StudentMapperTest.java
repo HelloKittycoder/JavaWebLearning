@@ -1,10 +1,5 @@
 package com.bjsxt.mapper;
 
-/**
- * Create by Administrator on 2019/3/26
- * 使用AutoMapping结合别名实现关联单个对象（说明：无法做到关联集合）
- */
-
 import com.bjsxt.BaseTest;
 import com.bjsxt.pojo.Student;
 import org.apache.ibatis.session.SqlSession;

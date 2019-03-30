@@ -1,10 +1,7 @@
 package com.bjsxt.mapper;
 
 import com.bjsxt.pojo.Teacher;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -28,5 +25,15 @@ public interface TeacherMapper {
     // 删除
     @Delete("delete from teacher where id=#{0}")
     int deleteById(int id);
+
+    // 通过注解实现resultMap(n+1)查询
+    @Results(value = {
+            @Result(id = true, property = "id", column = "id"),
+            @Result(property = "name", column = "name"),
+            @Result(property = "list", column = "id",
+                    many = @Many(select = "com.bjsxt.mapper.StudentMapper.selectByTid"))
+    })
+    @Select("select * from teacher")
+    List<Teacher> selectTeacher();
 }
 
