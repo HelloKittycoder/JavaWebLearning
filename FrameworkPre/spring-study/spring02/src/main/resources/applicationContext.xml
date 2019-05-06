@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- id表示获取到对象标识
+     class表示创建哪个类的对象 -->
+    <bean id="peo" class="com.bjsxt.pojo.People">
+        <!-- ref引用另一个bean   value基本数据类型或String等 -->
+        <constructor-arg index="0" name="id" type="int" value="123"></constructor-arg>
+        <constructor-arg index="1" name="name" type="java.lang.String" value="张三"></constructor-arg>
+    </bean>
+
+    <!-- 实例工厂 -->
+    <bean id="factory" class="com.bjsxt.pojo.PeopleFactory"></bean>
+    <bean id="peo1" factory-bean="factory" factory-method="newInstance"></bean>
+
+    <!-- 静态工厂 -->
+    <bean id="peo2" class="com.bjsxt.pojo.PeopleFactory" factory-method="newInstanceStatic"></bean>
+</beans>
