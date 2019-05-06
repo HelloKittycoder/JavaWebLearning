@@ -1,4 +1,4 @@
-###SpringIoC  
+### SpringIoC  
 1. 中文名称：控制反转  
 2. 英文名称：Inversion of Control  
 3. IoC是什么？  
@@ -8,7 +8,7 @@
 4）IoC最大的作用：解耦  
 程序员不需要管理对象，解除了对象管理和程序员之间的耦合
 
-###Spring环境搭建
+### Spring环境搭建
 1. 导入jar  
 2. 在src下新建applicationContext.xml  
 1）文件名称和路径自定义  
