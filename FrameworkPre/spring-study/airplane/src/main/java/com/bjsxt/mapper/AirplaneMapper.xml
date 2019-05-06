@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：理解成实现类的全路径（包名+类名） -->
+<mapper namespace="com.bjsxt.mapper.AirplaneMapper">
+
+    <resultMap id="mymap" type="airplane">
+        <id column="id" property="id"/>
+        <result column="airno" property="airNo"/>
+        <result column="time" property="time"/>
+        <result column="price" property="price"/>
+        <association property="takePort" javaType="airport">
+            <id column="takeid" property="id"/>
+            <result column="takeportname" property="portName"/>
+            <result column="takecityname" property="cityName"/>
+        </association>
+        <association property="landPort" javaType="airport">
+            <id column="landid" property="id"/>
+            <result column="landportname" property="portName"/>
+            <result column="landcityname" property="cityName"/>
+        </association>
+    </resultMap>
+    <select id="selByTakeidLandid" resultMap="mymap">
+        select a.*, p.id takeid, p.portname takeportname, p.cityname takecityname,
+        t.id landid, t.portname landportname, t.cityname landcityname
+        from airplane a
+            left join airport p
+        on a.takeid = p.id
+            left join airport t
+        on a.landid = t.id
+        <where>
+            <if test="takeid>0">
+                and takeid = #{takeid}
+            </if>
+            <if test="landid>0">
+                and landid = #{landid}
+            </if>
+        </where>
+    </select>
+</mapper>
