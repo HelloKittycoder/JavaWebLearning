@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="peo" class="com.bjsxt.pojo.People">
+        <property name="id">
+            <value>222</value>
+        </property>
+        <property name="name">
+            <value>李四</value>
+        </property>
+        <property name="set">
+            <set>
+                <value>1</value>
+                <value>2</value>
+                <value>3</value>
+                <value>4</value>
+            </set>
+        </property>
+        <property name="list" value="1">
+        </property>
+        <property name="strs">
+            <array>
+                <value>1</value>
+                <value>2</value>
+                <value>3</value>
+                <value>4</value>
+            </array>
+        </property>
+        <property name="map">
+            <map>
+                <entry key="a" value="11"/>
+                <entry key="b" value="22"/>
+            </map>
+        </property>
+        <property name="demoProps">
+            <props>
+                <prop key="aProp">aaa</prop>
+                <prop key="bProp">bbb</prop>
+            </props>
+        </property>
+        <property name="desk" ref="desk"/>
+    </bean>
+
+    <bean id="desk" class="com.bjsxt.pojo.Desk">
+        <property name="id" value="101"/>
+        <property name="price" value="100.11"/>
+    </bean>
+</beans>
