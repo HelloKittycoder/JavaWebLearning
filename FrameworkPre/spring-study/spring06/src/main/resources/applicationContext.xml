@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!-- 配置通知类对象，需要在切面中引入 -->
+    <bean id="mybefore" class="com.bjsxt.advice.MyBeforeAdvice"></bean>
+    <bean id="myafter" class="com.bjsxt.advice.MyAfterAdvice"></bean>
+
+    <!-- 配置切面 -->
+    <aop:config>
+        <!-- 配置切点 -->
+        <aop:pointcut id="mypoint" expression="execution(* com.bjsxt.interceptMethod.Demo.demo2(String,int))"/>
+        <aop:pointcut id="mypoint2" expression="execution(* com.bjsxt.interceptMethod.Demo.demo1())"/>
+
+        <!-- 通知 -->
+        <aop:advisor advice-ref="mybefore" pointcut-ref="mypoint"/>
+        <aop:advisor advice-ref="myafter" pointcut-ref="mypoint2"/>
+    </aop:config>
+
+    <!-- 配置Demo类，测试使用 -->
+    <bean id="demo" class="com.bjsxt.interceptMethod.Demo"></bean>
+</beans>
