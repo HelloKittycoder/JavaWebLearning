@@ -2,7 +2,7 @@
 1. 新建一个类实现ThrowsAdvice接口  
 1.1 必须自己写方法，且必须叫afterThrowing    
 1.2 有两种参数方式（必须是1个或4个）  
-写哪个都可以，如果两个都写，只会执行最后一个方法
+写哪个都可以，如果两个都写，只会执行最后一个方法  
 1.3 异常类型要与切点报的异常类型一致
 ```java
 public class MyThrowAdvice implements ThrowsAdvice {
