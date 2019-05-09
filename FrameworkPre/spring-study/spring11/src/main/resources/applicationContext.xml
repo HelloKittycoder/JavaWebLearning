@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="myadvice" class="com.bjsxt.advice.MyAdvice"></bean>
+    <aop:config>
+        <aop:aspect ref="myadvice">
+            <aop:pointcut id="mypoint" expression="execution(* com.bjsxt.interceptMethod.Demo.demo1())"/>
+            <aop:before method="mybefore" pointcut-ref="mypoint"/>
+            <aop:after method="myafter" pointcut-ref="mypoint"/>
+            <aop:after-returning method="myaftering" pointcut-ref="mypoint"/>
+            <aop:after-throwing method="mythrow" pointcut-ref="mypoint"/>
+            <aop:around method="myaround" pointcut-ref="mypoint"/>
+        </aop:aspect>
+    </aop:config>
+    <bean id="demo" class="com.bjsxt.interceptMethod.Demo"></bean>
+</beans>
