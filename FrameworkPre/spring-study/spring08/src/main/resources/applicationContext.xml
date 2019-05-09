@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--&lt;!&ndash; 配置通知类对象，需要在切面中引入 &ndash;&gt;
+    <bean id="mybefore" class="com.bjsxt.advice.MyBeforeAdvice"></bean>
+    <bean id="myafter" class="com.bjsxt.advice.MyAfterAdvice"></bean>
+
+    &lt;!&ndash; 配置切面 &ndash;&gt;
+    <aop:config>
+        &lt;!&ndash; 配置切点 &ndash;&gt;
+        <aop:pointcut id="mypoint" expression="execution(* com.bjsxt.interceptMethod.*.*(..))"/>
+
+        &lt;!&ndash; 通知 &ndash;&gt;
+        <aop:advisor advice-ref="mybefore" pointcut-ref="mypoint"/>
+        <aop:advisor advice-ref="myafter" pointcut-ref="mypoint"/>
+    </aop:config>
+
+    &lt;!&ndash; 配置Demo类，测试使用 &ndash;&gt;
+    <bean id="demo" class="com.bjsxt.interceptMethod.Demo"></bean>
+    <bean id="demo1" class="com.bjsxt.interceptMethod.Demo1"></bean>-->
+
+    <bean id="myThrow" class="com.bjsxt.advice.MyThrowAdvice"></bean>
+    <aop:config>
+        <aop:aspect ref="myThrow">
+            <aop:pointcut id="mypoint" expression="execution(* com.bjsxt.interceptMethod.Demo.demo1())"/>
+            <aop:after-throwing method="myexception" pointcut-ref="mypoint" throwing="e"/>
+        </aop:aspect>
+    </aop:config>
+    <bean id="demo" class="com.bjsxt.interceptMethod.Demo"></bean>
+</beans>
