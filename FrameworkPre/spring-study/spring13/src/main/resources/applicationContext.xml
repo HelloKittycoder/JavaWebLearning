@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 如果有多个包，则将包路径用逗号分隔开 com.bjsxt.advice,com.bjsxt.test -->
+    <context:component-scan base-package="com.bjsxt.advice,com.bjsxt.interceptMethod"></context:component-scan>
+    <!-- proxy-target-class
+    true 使用cglib动态代理
+    false 使用jdk动态代理
+    -->
+    <aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
+    <!--<bean id="myadvice" class="com.bjsxt.advice.MyAdvice"></bean>
+    <aop:config>
+        <aop:aspect ref="myadvice">
+            <aop:pointcut id="mypoint" expression="execution(* com.bjsxt.interceptMethod.Demo.demo1(String,int)) and args(name,age)"/>
+            <aop:pointcut id="mypoint1" expression="execution(* com.bjsxt.interceptMethod.Demo.demo1(String)) and args(name1)"/>
+            <aop:before method="mybefore" pointcut-ref="mypoint" arg-names="name,age"/>
+            <aop:before method="mybefore1" pointcut-ref="mypoint1" arg-names="name1"/>
+            &lt;!&ndash;<aop:after method="myafter" pointcut-ref="mypoint"/>
+            <aop:after-returning method="myaftering" pointcut-ref="mypoint"/>
+            <aop:after-throwing method="mythrow" pointcut-ref="mypoint"/>
+            <aop:around method="myaround" pointcut-ref="mypoint"/>&ndash;&gt;
+        </aop:aspect>
+    </aop:config>
+    <bean id="demo" class="com.bjsxt.interceptMethod.Demo"></bean>-->
+</beans>
