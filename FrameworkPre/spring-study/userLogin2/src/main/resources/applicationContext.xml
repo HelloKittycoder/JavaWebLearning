@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!-- 数据源封装类
+       数据源：获取数据库连接
+       spring-jdbc.jar中
+    -->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=UTF-8"/>
+        <property name="username" value="root"/>
+        <property name="password" value="123456"/>
+    </bean>
+
+    <!-- 创建SqlSessionFactory对象 -->
+    <bean id="factory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 数据库连接信息来源于dataSource -->
+        <property name="dataSource" ref="dataSource"/>
+        <!-- 设置要起别名的类所在的包路径 -->
+        <property name="typeAliasesPackage" value="com.bjsxt.pojo"/>
+    </bean>
+
+    <!-- 扫描器：相当于mybatis.xml中mappers下的package标签 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!-- 要扫描哪个包 -->
+        <property name="basePackage" value="com.bjsxt.mapper"/>
+        <!-- 和factory产生关系 -->
+        <property name="sqlSessionFactory" ref="factory"/>
+    </bean>
+
+    <!-- 创建Service -->
+    <bean id="usersService" class="com.bjsxt.service.impl.UsersServiceImpl">
+        <property name="usersMapper" ref="usersMapper"/>
+    </bean>
+
+    <!-- aop（当代理类转换为实现类报错时，加上下面这行） -->
+    <aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
+    <bean id="mybefore" class="com.bjsxt.advice.MyBeforeAdvice"></bean>
+    <bean id="myafter" class="com.bjsxt.advice.MyAfterAdvice"></bean>
+    <aop:config>
+        <aop:pointcut id="mypoint" expression="execution(* com.bjsxt.service.impl.UsersServiceImpl.login(..))"/>
+        <aop:advisor advice-ref="mybefore" pointcut-ref="mypoint"/>
+        <aop:advisor advice-ref="myafter" pointcut-ref="mypoint"/>
+    </aop:config>
+</beans>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+         http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+    <!-- 当tomcat加载web.xml时，把spring配置文件信息存放在application对象中 -->
+    <!-- WebApplicationContext容器，是ApplicationContext子接口 -->
+    <!-- 设置spring配置文件路径 -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:applicationContext.xml</param-value>
+    </context-param>
+    <!-- 加载Spring的配置文件 -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+</web-app>
