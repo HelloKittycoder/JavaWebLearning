@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd"
+        default-autowire="byName">
+
+    <!-- 如果要加载多个properties文件，写成 classpath:db.properties,classpath:db1.properties -->
+    <context:property-placeholder location="classpath:db.properties,classpath:second.properties"/>
+    <context:component-scan base-package="com.bjsxt.service.impl"/>
+    <!-- 数据源封装类
+       数据源：获取数据库连接
+       spring-jdbc.jar中
+    -->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+
+    <!-- 创建SqlSessionFactory对象 -->
+    <bean id="factory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 设置要起别名的类所在的包路径 -->
+        <property name="typeAliasesPackage" value="com.bjsxt.pojo"/>
+    </bean>
+
+    <!-- 扫描器：相当于mybatis.xml中mappers下的package标签 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--<property name="sqlSessionFactory" ref="factory"/>-->
+        <property name="sqlSessionFactoryBeanName" value="factory"/>
+        <!-- 要扫描哪个包 -->
+        <property name="basePackage" value="com.bjsxt.mapper"/>
+    </bean>
+
+    <!-- 创建Service -->
+    <bean id="usersService" class="com.bjsxt.service.impl.UsersServiceImpl">
+    </bean>
+
+    <!-- aop（当代理类转换为实现类报错时，加上下面这行） -->
+    <aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
+    <bean id="mybefore" class="com.bjsxt.advice.MyBeforeAdvice"></bean>
+    <bean id="myafter" class="com.bjsxt.advice.MyAfterAdvice"></bean>
+    <aop:config>
+        <aop:pointcut id="mypoint" expression="execution(* com.bjsxt.service.impl.UsersServiceImpl.login(..))"/>
+        <aop:advisor advice-ref="mybefore" pointcut-ref="mypoint"/>
+        <aop:advisor advice-ref="myafter" pointcut-ref="mypoint"/>
+    </aop:config>
+</beans>
