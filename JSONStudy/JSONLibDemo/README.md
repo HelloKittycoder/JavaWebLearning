@@ -9,6 +9,11 @@
 参考： https://github.com/alibaba/fastjson/  
 https://blog.csdn.net/sinat_36596988/article/details/81182070
 
+3.jackson
+[JacksonTest.java](https://github.com/HelloKittycoder/JavaWebLearning/blob/master/JSONStudy/JSONLibDemo/src/main/java/com/kittycoder/easydemo/JacksonTest.java)  
+参考： https://github.com/FasterXML/jackson-docs  
+https://blog.csdn.net/joyous/article/details/9448461
+
 序号 | 测试方法 | 说明 
 :---: | :------- | :-------- 
 01 | jsonObjectTest| 创建json对象

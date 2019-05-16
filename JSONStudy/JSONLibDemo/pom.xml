@@ -14,6 +14,8 @@
         <net.sf.version>2.1</net.sf.version>
         <!-- fastjson -->
         <fastjson.version>1.2.47</fastjson.version>
+        <!-- jackson -->
+        <jackson.version>2.4.1</jackson.version>
         <!-- junit -->
         <junit.version>4.12</junit.version>
     </properties>
@@ -31,6 +33,22 @@
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>${fastjson.version}</version>
+        </dependency>
+        <!-- jackson相关包 -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
         </dependency>
         <!-- 单元测试 -->
         <dependency>
