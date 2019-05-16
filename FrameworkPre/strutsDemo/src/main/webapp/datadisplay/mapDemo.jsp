@@ -16,11 +16,13 @@
 <h3>遍历stringHashMap（无序的HashMap）</h3>
 <table cellpadding="0" cellspacing="0" class="result-table">
     <thead>
-        <th>map的key</th>
-        <th>map的value</th>
-        <th>遍历的索引值</th>
-        <th>遍历的所在行</th>
-        <th>所在行数的奇偶性</th>
+        <tr>
+            <th>map的key</th>
+            <th>map的value</th>
+            <th>遍历的索引值</th>
+            <th>遍历的所在行</th>
+            <th>所在行数的奇偶性</th>
+        </tr>
     </thead>
     <tbody>
         <s:iterator value="pageResult.stringHashMap" var="stringMap" status="status">
@@ -37,17 +39,44 @@
 <h3>遍历stringLinkedHashMap（有序的LinkedHashMap）</h3>
 <table cellpadding="0" cellspacing="0" class="result-table">
     <thead>
-        <th>map的key</th>
-        <th>map的value</th>
-        <th>遍历的索引值</th>
-        <th>遍历的所在行</th>
-        <th>所在行数的奇偶性</th>
+        <tr>
+            <th>map的key</th>
+            <th>map的value</th>
+            <th>遍历的索引值</th>
+            <th>遍历的所在行</th>
+            <th>所在行数的奇偶性</th>
+        </tr>
     </thead>
     <tbody>
         <s:iterator value="pageResult.stringLinkedHashMap" var="stringMap" status="status">
             <tr <s:if test="%{#status.count%2==0}">bgcolor="#F2F2F2" </s:if>>
                 <td>${key}</td>
                 <td>${value}</td>
+                <td>${status.index}</td>
+                <td>${status.count}</td>
+                <td><s:if test="%{#status.count%2==0}">偶数</s:if><s:else>奇数</s:else></td>
+            </tr>
+        </s:iterator>
+    </tbody>
+</table>
+<h3>遍历mapList（List&lt;Map&lt;String, String&gt;&gt;）遍历每个map中指定的键</h3>
+<table cellpadding="0" cellspacing="0" class="result-table">
+    <thead>
+        <tr>
+            <th>节点id</th>
+            <th>开始节点</th>
+            <th>结束节点</th>
+            <th>遍历的索引值</th>
+            <th>遍历的所在行</th>
+            <th>所在行数的奇偶性</th>
+        </tr>
+    </thead>
+    <tbody>
+        <s:iterator value="mapList" var="map" status="status">
+            <tr <s:if test="%{#status.count%2==0}">bgcolor="#F2F2F2" </s:if>>
+                <td>${map.sequenceId}</td>
+                <td><s:property value="%{#map['startNodeName']}"/></td>
+                <td><s:property value="%{#map['endNodeName']}"/></td>
                 <td>${status.index}</td>
                 <td>${status.count}</td>
                 <td><s:if test="%{#status.count%2==0}">偶数</s:if><s:else>奇数</s:else></td>

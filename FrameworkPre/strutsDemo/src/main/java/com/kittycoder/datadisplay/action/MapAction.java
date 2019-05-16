@@ -3,8 +3,7 @@ package com.kittycoder.datadisplay.action;
 import com.kittycoder.datadisplay.po.PageResult;
 import com.opensymphony.xwork2.ActionSupport;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
+import java.util.*;
 
 /**
  * Created by shucheng on 2018/4/16.
@@ -13,6 +12,7 @@ import java.util.LinkedHashMap;
 public class MapAction {
 
     private PageResult pageResult;
+    private List<Map<String, String>> mapList;
 
     public String testMap() {
         try {
@@ -38,6 +38,28 @@ public class MapAction {
             stringLinkedHashMap.put("five","钱七");
             stringLinkedHashMap.put("six","郑八");
             pageResult.setStringLinkedHashMap(stringLinkedHashMap);
+
+            // 生成List<Map<String, String>>
+            if(mapList == null) {
+                mapList = new ArrayList<>();
+            }
+            Map<String, String> map = new HashMap<>();
+            map.put("startNodeName", "开始");
+            map.put("endNodeName", "项目负责人");
+            map.put("sequenceId", "101");
+            mapList.add(map);
+
+            map = new HashMap<>();
+            map.put("startNodeName", "项目负责人");
+            map.put("endNodeName", "部门负责人");
+            map.put("sequenceId", "102");
+            mapList.add(map);
+
+            map = new HashMap<>();
+            map.put("startNodeName", "部门负责人");
+            map.put("endNodeName", "总经理");
+            map.put("sequenceId", "103");
+            mapList.add(map);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -50,5 +72,13 @@ public class MapAction {
 
     public void setPageResult(PageResult pageResult) {
         this.pageResult = pageResult;
+    }
+
+    public List<Map<String, String>> getMapList() {
+        return mapList;
+    }
+
+    public void setMapList(List<Map<String, String>> mapList) {
+        this.mapList = mapList;
     }
 }
