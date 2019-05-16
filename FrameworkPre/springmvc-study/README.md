@@ -6,4 +6,5 @@ SpringMVC学习
 05 [复杂参数和restful风格参数](https://github.com/HelloKittycoder/JavaWebLearning/commit/a632fecb8028d90b3e95e2954c35845a540f3eb6)  
 06 [跳转方式](https://github.com/HelloKittycoder/JavaWebLearning/tree/master/FrameworkPre/springmvc-study/springmvc05)  
 07 [视图解析器](https://github.com/HelloKittycoder/JavaWebLearning/tree/master/FrameworkPre/springmvc-study/springmvc06)  
-08 [@ResponseBody](https://github.com/HelloKittycoder/JavaWebLearning/tree/master/FrameworkPre/springmvc-study/springmvc07)
+08 [@ResponseBody](https://github.com/HelloKittycoder/JavaWebLearning/tree/master/FrameworkPre/springmvc-study/springmvc07)  
+09 [能力提升-菜单](https://github.com/HelloKittycoder/JavaWebLearning/tree/master/FrameworkPre/springmvc-study/menu)  
