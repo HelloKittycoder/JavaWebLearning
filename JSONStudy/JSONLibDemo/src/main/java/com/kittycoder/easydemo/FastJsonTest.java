@@ -4,9 +4,11 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
+import com.alibaba.fastjson.util.ParameterizedTypeImpl;
 import com.kittycoder.po.Student;
 import org.junit.Test;
 
+import java.lang.reflect.Type;
 import java.util.*;
 
 /**
@@ -144,6 +146,26 @@ public class FastJsonTest {
         // JSONArray转List
         List<Student> studentList = JSON.parseObject(jsonArray.toJSONString(), new TypeReference<List<Student>>(){});
         System.out.println(studentList);
+    }
+
+    // 06 JSONArray与List互转2
+    @Test
+    public void test() throws Exception {
+        String jsonStr = "[{\"sname\":\"张三\",\"sage\":10,\"sid\":\"1\"},{\"sname\":\"李四\",\"sage\":20,\"sid\":\"2\"}]";
+
+        // JSONArray转List
+        // 方法一：通过TypeReference来传递泛型
+        TypeReference tr = new TypeReference<List<Student>>(){};
+        Type type = tr.getType();
+        List<Student> studentList = JSON.parseObject(jsonStr, type);
+        System.out.println(studentList);
+
+        // 方法二：手动构建泛型类对应的Type（该方式更为灵活）
+        Type type2 = new ParameterizedTypeImpl(new Type[]{Student.class}, null, List.class);
+        /*List<Student> list = new ArrayList<Student>();
+        String jsonStr2 = JSON.toJSONString(list);*/
+        List<Student> studentList2 = JSON.parseObject(jsonStr, type2);
+        System.out.println(studentList2);
     }
 
     // 07 Map与json字符串互转
