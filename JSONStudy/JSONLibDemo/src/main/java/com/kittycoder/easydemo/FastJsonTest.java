@@ -190,6 +190,27 @@ public class FastJsonTest {
         }
     }
 
+    // 07 Map与json字符串互转2
+    @Test
+    public void mapJsonTest2() {
+
+        // 直接使用TypeReference
+        String jsonData = "{\"1\":{\"sname\":\"张三\",\"sage\":10,\"sid\":\"1\"},\"2\":{\"sname\":\"李四\",\"sage\":20,\"sid\":\"2\"}}";
+        Map<Integer, Student> map = JSON.parseObject(jsonData, new TypeReference<Map<Integer, Student>>(){});
+        System.out.println(map);
+
+        // 使用对应的Type
+        TypeReference tr = new TypeReference<Map<Integer, Student>>(){};
+        Type type2 = tr.getType();
+        Map<Integer, Student> map2 = JSON.parseObject(jsonData, type2);
+        System.out.println(map2);
+
+        // 手动构建泛型类（Map<Integer,Student>）对应的Type
+        Type type3 = new ParameterizedTypeImpl(new Type[]{Integer.class, Student.class}, null, Map.class);
+        Map<Integer, Student> map3 = JSON.parseObject(jsonData, type3);
+        System.out.println(map3);
+    }
+
     // 判断是否为json数组
     public boolean isArray(Object object) {
         return object instanceof JSONArray;
