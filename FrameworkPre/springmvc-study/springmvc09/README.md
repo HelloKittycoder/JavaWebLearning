@@ -1,7 +1,7 @@
 ### 文件下载
 1. 访问资源时响应头如果没有设置Content-Disposition，浏览器默认按照inline值进行处理  
 inline能显示就显示，不能显示就下载  
-2.只需要修改响应头中Content-Disposition="attachment;filename=文件名"  
+2. 只需要修改响应头中Content-Disposition="attachment;filename=文件名"  
 2.1 attachment 下载，以附件形式下载  
 2.2 filename=值 就是下载时显示的下载文件名  
 3. 实现步骤  
