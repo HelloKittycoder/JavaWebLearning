@@ -13,3 +13,4 @@ SpringMVC学习
 11 [文件下载](https://github.com/HelloKittycoder/JavaWebLearning/tree/master/FrameworkPre/springmvc-study/springmvc09)  
 12 [文件上传](https://github.com/HelloKittycoder/JavaWebLearning/tree/master/FrameworkPre/springmvc-study/springmvc10)  
 13 [能力提升-带有头像的注册](https://github.com/HelloKittycoder/JavaWebLearning/tree/master/FrameworkPre/springmvc-study/register)  
+14 [能力提升-下载](https://github.com/HelloKittycoder/JavaWebLearning/tree/master/FrameworkPre/springmvc-study/register2)  
