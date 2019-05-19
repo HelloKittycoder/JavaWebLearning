@@ -12,3 +12,4 @@ SpringMVC学习
 [SpringMVC作用域传值的几种方式](https://github.com/HelloKittycoder/JavaWebLearning/tree/master/FrameworkPre/springmvc-study/springmvc08#springmvc%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%BC%A0%E5%80%BC%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F)  
 11 [文件下载](https://github.com/HelloKittycoder/JavaWebLearning/tree/master/FrameworkPre/springmvc-study/springmvc09)  
 12 [文件上传](https://github.com/HelloKittycoder/JavaWebLearning/tree/master/FrameworkPre/springmvc-study/springmvc10)  
+13 [能力提升-带有头像的注册](https://github.com/HelloKittycoder/JavaWebLearning/tree/master/FrameworkPre/springmvc-study/register)  
