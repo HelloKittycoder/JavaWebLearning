@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd"
+       default-autowire="byName">
+
+    <!-- 需要扫描注解的service实现类 -->
+    <context:component-scan base-package="com.bjsxt.service.impl"/>
+    <!-- 加载属性文件 -->
+    <context:property-placeholder location="classpath:db.properties"/>
+    <!-- 数据源封装类
+        数据源：获取数据库连接
+        spring-jdbc.jar中
+     -->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+
+    <!-- 创建SqlSessionFactory对象 -->
+    <bean id="factory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 数据库连接信息来源于dataSource -->
+        <property name="dataSource" ref="dataSource"/>
+        <!-- 设置要起别名的类所在的包路径 -->
+        <property name="typeAliasesPackage" value="com.bjsxt.pojo"/>
+    </bean>
+
+    <!-- 扫描器：相当于mybatis.xml中mappers下的package标签 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!-- 要扫描哪个包 -->
+        <property name="basePackage" value="com.bjsxt.mapper"/>
+        <!-- 和factory产生关系 -->
+        <property name="sqlSessionFactoryBeanName" value="factory"/>
+    </bean>
+
+    <!-- 事务配置 -->
+    <!-- 事务管理类 -->
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!-- 需要进行事务控制的方法 -->
+    <tx:advice id="txAdvice" transaction-manager="txManager">
+        <tx:attributes>
+            <tx:method name="ins*"/>
+            <tx:method name="upda*"/>
+            <tx:method name="del*"/>
+            <tx:method name="*"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <!-- 配置切点 -->
+    <aop:config>
+        <aop:pointcut id="mypoint" expression="execution(* com.bjsxt.service.impl.*.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="mypoint"/>
+    </aop:config>
+</beans>
