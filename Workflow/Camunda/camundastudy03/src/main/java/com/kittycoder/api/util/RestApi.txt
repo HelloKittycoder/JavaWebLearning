@@ -1,0 +1,15 @@
+rest api常用接口：
+接口前缀：http://localhost:8085/rest/engine/default
+
+流程部署
+1.获取所有资源（id：流程部署id）
+GET /deployment/{id}/resources
+2.获取流程资源文件（id：流程部署id；resourceId：资源id）文件流
+GET /deployment/{id}/resources/{resourceId}/data
+
+流程定义：
+1.所有流程定义
+GET/process-definition
+http://localhost:8085/rest/engine/default/process-definition
+2.流程图（id：流程定义id）
+GET/process-definition/{id}/diagram
