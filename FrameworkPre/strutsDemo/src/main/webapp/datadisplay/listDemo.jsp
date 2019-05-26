@@ -17,10 +17,12 @@
 <h3>获取List的每个对象（method1）</h3>
 <table cellpadding="0" cellspacing="0" class="result-table">
     <thead>
-        <th>学生id</th>
-        <th>学生姓名</th>
-        <th>学生生日</th>
-        <th>学生年龄</th>
+        <tr>
+            <th>学生id</th>
+            <th>学生姓名</th>
+            <th>学生生日</th>
+            <th>学生年龄</th>
+        </tr>
     </thead>
     <tbody>
         <s:iterator value="studentList" var="student" status="status">
@@ -37,10 +39,12 @@
 <h3>获取List的每个对象（method2）</h3>
 <table cellpadding="0" cellspacing="0" class="result-table">
     <thead>
-    <th>学生id</th>
-    <th>学生姓名</th>
-    <th>学生生日</th>
-    <th>学生年龄</th>
+        <tr>
+            <th>学生id</th>
+            <th>学生姓名</th>
+            <th>学生生日</th>
+            <th>学生年龄</th>
+        </tr>
     </thead>
     <tbody>
     <s:iterator value="studentList" status="status">
@@ -51,6 +55,36 @@
             <td>${studentList[status.index].sage}</td>
         </tr>
     </s:iterator>
+    </tbody>
+</table>
+
+<h3>获取List的每个对象（后台传来的list最多为5个，前端表格的行如果不足5个用空行补上）</h3>
+<table cellpadding="0" cellspacing="0" class="result-table">
+    <thead>
+        <tr>
+            <th>学生id</th>
+            <th>学生姓名</th>
+            <th>学生生日</th>
+            <th>学生年龄</th>
+        </tr>
+    </thead>
+    <tbody>
+        <s:iterator value="studentList" status="status">
+            <tr <s:if test="#status.count%2==0">bgcolor="#F2F2F2" </s:if>>
+                <td>${studentList[status.index].sid}</td>
+                <td>${studentList[status.index].sname}</td>
+                <td>${studentList[status.index].sbirthday}</td>
+                <td>${studentList[status.index].sage}</td>
+            </tr>
+        </s:iterator>
+        <s:iterator begin="studentList.size()+1" end="5">
+            <tr <s:if test="top%2==0">bgcolor="#F2F2F2" </s:if>>
+                <td>${top}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </s:iterator>
     </tbody>
 </table>
 
