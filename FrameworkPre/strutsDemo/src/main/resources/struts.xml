@@ -19,5 +19,16 @@
             <result name="success">/datadisplay/listDemo.jsp</result>
             <result name="jsonData" type="json"></result>
         </action>
+        <!-- 测试struts下载 -->
+        <action name="testDownload" class="com.kittycoder.datadisplay.action.DownloadAction" method="downloadFile">
+            <result name="success" type="stream">
+                <param name="contentType">multipart/form-data</param>
+                <param name="inputName">inputStream</param>
+                <param name="contentDisposition">
+                    attachment;filename="${downloadFileName}"
+                </param>
+                <param name="bufferSize">2048</param>
+            </result>
+        </action>
     </package>
 </struts>
