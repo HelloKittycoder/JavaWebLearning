@@ -19,10 +19,39 @@
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
         <!-- 里面包含了beans，core，expression，aop -->
+        <!--<dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${org.springframework.version}</version>
+        </dependency>-->
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>${org.springframework.version}</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/libs/spring-beans-5.1.8.BUILD-SNAPSHOT-sources.jar</systemPath>
+        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>${org.springframework.version}</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/libs/spring-context-5.1.8.BUILD-SNAPSHOT-sources.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${org.springframework.version}</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/libs/spring-core-5.1.8.BUILD-SNAPSHOT-sources.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-expression</artifactId>
+            <version>${org.springframework.version}</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/libs/spring-expression-5.1.8.BUILD-SNAPSHOT-sources.jar</systemPath>
         </dependency>
         
         <!-- https://mvnrepository.com/artifact/commons-logging/commons-logging -->
