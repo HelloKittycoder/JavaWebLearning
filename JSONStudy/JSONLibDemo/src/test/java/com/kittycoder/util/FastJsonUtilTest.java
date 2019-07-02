@@ -8,6 +8,7 @@ import org.junit.Test;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -55,6 +56,19 @@ public class FastJsonUtilTest {
         String mapJsonData = "{\"1\":{\"sname\":\"张三\",\"sage\":10,\"sid\":\"1\"},\"2\":{\"sname\":\"李四\",\"sage\":20,\"sid\":\"2\"}}";
         Map<Integer, Student> map = FastJsonUtil.convertToBean(mapJsonData, new Type[]{Integer.class, Student.class}, Map.class);
         System.out.println(map);
+    }
+
+    @Test
+    public void test2() {
+        // 转换成Map<Integer, Student>
+        // 写法一：
+        String mapJsonData = "{\"1\":{\"sname\":\"张三\",\"sage\":10,\"sid\":\"1\"},\"2\":{\"sname\":\"李四\",\"sage\":20,\"sid\":\"2\"}}";
+        Map<Integer, Student> map = FastJsonUtil.convertToBean(mapJsonData, new Type[]{Integer.class, Student.class}, Map.class);
+        System.out.println(map);
+
+        // 写法二：（可以稍微作下封装）
+        Map<Integer, Student> map2 = JSON.parseObject(mapJsonData, new HashMap<Integer, Student>(){}.getClass().getGenericSuperclass());
+        System.out.println(map2);
     }
 
     // 泛型擦除
