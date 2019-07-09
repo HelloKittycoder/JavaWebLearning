@@ -7,6 +7,7 @@ import org.camunda.bpm.engine.TaskService;
 import org.camunda.bpm.engine.history.HistoricTaskInstanceQuery;
 import org.camunda.bpm.engine.history.HistoricVariableInstanceQuery;
 import org.camunda.bpm.engine.repository.ProcessDefinitionQuery;
+import org.camunda.bpm.engine.runtime.ProcessInstanceQuery;
 import org.camunda.bpm.engine.task.TaskQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -50,6 +51,11 @@ public class ServiceUtil {
     // 获取HistoricVariableInstanceQuery
     public static HistoricVariableInstanceQuery getHistoricVariableInstanceQuery() {
         return serviceUtil.historyService.createHistoricVariableInstanceQuery();
+    }
+
+    // 获取ProcessInstanceQuery
+    public static ProcessInstanceQuery getProcessInstanceQuery() {
+        return serviceUtil.runtimeService.createProcessInstanceQuery();
     }
 
     // 获取TaskQuery
