@@ -4,9 +4,11 @@ import org.camunda.bpm.engine.HistoryService;
 import org.camunda.bpm.engine.RepositoryService;
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.TaskService;
+import org.camunda.bpm.engine.history.HistoricActivityInstanceQuery;
 import org.camunda.bpm.engine.history.HistoricTaskInstanceQuery;
 import org.camunda.bpm.engine.history.HistoricVariableInstanceQuery;
 import org.camunda.bpm.engine.repository.ProcessDefinitionQuery;
+import org.camunda.bpm.engine.runtime.ProcessInstanceModificationBuilder;
 import org.camunda.bpm.engine.runtime.ProcessInstanceQuery;
 import org.camunda.bpm.engine.task.TaskQuery;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +55,11 @@ public class ServiceUtil {
         return serviceUtil.historyService.createHistoricVariableInstanceQuery();
     }
 
+    // 获取HistoricActivityInstanceQuery
+    public static HistoricActivityInstanceQuery getHistoricActivityInstanceQuery() {
+        return serviceUtil.historyService.createHistoricActivityInstanceQuery();
+    }
+
     // 获取ProcessInstanceQuery
     public static ProcessInstanceQuery getProcessInstanceQuery() {
         return serviceUtil.runtimeService.createProcessInstanceQuery();
@@ -63,6 +70,10 @@ public class ServiceUtil {
         return serviceUtil.taskService.createTaskQuery();
     }
     // --------------------------------获取Query对象end------------------------------------
+
+    public static ProcessInstanceModificationBuilder getProcessInstanceModificationByInstId(String processInstanceId) {
+        return getRuntimeService().createProcessInstanceModification(processInstanceId);
+    }
 
     public static RepositoryService getRepositoryService() {
         return serviceUtil.repositoryService;
