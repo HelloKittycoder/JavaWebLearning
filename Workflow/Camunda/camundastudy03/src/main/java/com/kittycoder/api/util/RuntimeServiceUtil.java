@@ -1,5 +1,7 @@
 package com.kittycoder.api.util;
 
+import org.camunda.bpm.engine.repository.ProcessDefinition;
+import org.camunda.bpm.engine.runtime.ProcessInstance;
 import org.camunda.bpm.engine.runtime.ProcessInstanceModificationBuilder;
 
 /**
@@ -9,6 +11,27 @@ public class RuntimeServiceUtil extends ServiceUtil {
 
     public static ProcessInstanceModificationBuilder getProcessInstanceModificationByInstId(String processInstanceId) {
         return getRuntimeService().createProcessInstanceModification(processInstanceId);
+    }
+
+    /**
+     * 根据流程实例id查询单个流程实例
+     *
+     * @param processInstanceId
+     * @return
+     */
+    public static ProcessInstance queryProcessInstanceById(String processInstanceId) {
+        return getProcessInstanceQuery().processInstanceId(processInstanceId)
+                .singleResult();
+    }
+
+    /**
+     * 根据流程定义id查询单个流程定义
+     * @param processDefinitionId
+     * @return
+     */
+    public static ProcessDefinition findProcessDefinitionById(String processDefinitionId) {
+        return getProcessDefinitionQuery().processDefinitionId(processDefinitionId)
+                .singleResult();
     }
 
     /**
