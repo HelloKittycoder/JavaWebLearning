@@ -1,8 +1,8 @@
 package com.kittycoder.api.controller;
 
 import com.kittycoder.api.service.ProcessOperService;
-import com.kittycoder.api.util.ProcessDiagramUtil;
 import com.kittycoder.api.util.RepositoryServiceUtil;
+import com.kittycoder.api.util.TaskServiceUtil;
 import io.swagger.annotations.ApiOperation;
 import org.camunda.bpm.engine.impl.pvm.process.ActivityImpl;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,7 +43,7 @@ public class ServiceUtilController {
     @GetMapping("/iterateBackActivity")
     public void iterateBackActivity() {
         String taskId = "0030ed46-97d7-11e9-94c6-02422b4a0087";
-        List<ActivityImpl> list = ProcessDiagramUtil.findBackActivity(taskId);
+        List<ActivityImpl> list = TaskServiceUtil.findBackActivity(taskId);
         System.out.println(list);
     }
 

@@ -1,10 +1,15 @@
 package com.kittycoder.api.util;
 
+import org.camunda.bpm.engine.runtime.ProcessInstanceModificationBuilder;
+
 /**
- * Created by shucheng on 2019-7-9 下午 23:03
- * 流程操作工具类（跳转节点，跳转连线）
+ * Created by shucheng on 2019-7-12 下午 15:54
  */
-public class ProcessOperUtil extends ServiceUtil {
+public class RuntimeServiceUtil extends ServiceUtil {
+
+    public static ProcessInstanceModificationBuilder getProcessInstanceModificationByInstId(String processInstanceId) {
+        return getRuntimeService().createProcessInstanceModification(processInstanceId);
+    }
 
     /**
      * 跳转到指定节点
