@@ -1,6 +1,5 @@
 package com.kittycoder.util;
 
-import com.kittycoder.po.Student;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
@@ -96,19 +95,5 @@ public class ListToJSON {
             e.printStackTrace();
         }
         return jsonObject;
-    }
-
-    public static void main(String[] args) {
-        List<Student> studentList = new ArrayList<Student>();
-        Student student = new Student("1", "张三", 10);
-        studentList.add(student);
-        student = new Student("2", "李四", 20);
-        studentList.add(student);
-        student = new Student("3", "王五", 30);
-        studentList.add(student);
-        student = new Student("4", "赵六", 40);
-        studentList.add(student);
-        JSONObject jsonObject = parseListToJSON2("studentList", studentList);
-        System.out.println(jsonObject);
     }
 }

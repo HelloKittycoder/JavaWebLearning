@@ -2,7 +2,7 @@ package com.kittycoder.util;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
-import com.kittycoder.po.Student;
+import com.kittycoder.baseUsageTest.po.Student;
 import org.junit.Test;
 
 import java.lang.reflect.ParameterizedType;
