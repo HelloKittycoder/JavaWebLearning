@@ -40,7 +40,7 @@ public class OutParamTest {
 
         JsonConfig jsonConfig = new JsonConfig();
         jsonConfig.registerJsonValueProcessor(Date.class, new JsonDateValueProcessor());
-        JSONArray jsonArray = JSONArray.fromObject(list);
+        JSONArray jsonArray = JSONArray.fromObject(list, jsonConfig);
         System.out.println(jsonArray.toString());
     }
 
