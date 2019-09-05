@@ -2,7 +2,7 @@
 [官方文档 cn](https://ibatis.apache.org/docs/java/pdf/iBATIS-SqlMaps-2_cn.pdf)  
 [官方文档 en](https://ibatis.apache.org/docs/java/pdf/iBATIS-SqlMaps-2_en.pdf)
 
-##### 标签使用
+##### 标签使用（测试类见[LogDaoTest.java](https://github.com/HelloKittycoder/JavaWebLearning/blob/master/FrameworkPre/ibatis-study/ibatis01/src/test/java/com/bjsxt/dao/LogDaoTest.java)）
 1. isNotEmpty标签（isNotNull类似）和prepend标签结合使用  
 （1） 作用：比如为prepend="and"，如果isNotEmpty成立，则在标签内容的前面追加and；  
 如果isNotEmpty不成立，则不产生标签里的内容，同时prepend也没效果  

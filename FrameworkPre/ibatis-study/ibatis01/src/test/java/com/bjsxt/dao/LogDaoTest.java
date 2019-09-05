@@ -1,4 +1,4 @@
-package com.bjsxt.mapper;
+package com.bjsxt.dao;
 
 import com.bjsxt.BaseTest;
 import com.bjsxt.pojo.Log;
