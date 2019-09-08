@@ -13,6 +13,7 @@
 这个时候会遇到一个问题：filename too long，解决方法为：（参考链接：https://blog.csdn.net/u012262450/article/details/82982452）  
 git config –global core.longpaths true  #关于是否要用global，可以参考https://blog.csdn.net/u010999809/article/details/89377911  
 （4）git checkout 7.10.0 #获取tag名称为7.10.0的源码以及版本信息  
+如果该tag无法checkout下来，则需要先执行git fetch --tags，然后再checkout该tag（参考https://www.jianshu.com/p/683da9248322）  
 （5）git tag #查看远程仓库中的所有tag  
 （6）A.git branch v7.10.0 7.10.0 #在本地仓库创建一个和tag名称相同的分支  
 说明：branch后面第一个参数是版本名称，第二个参数是tag名称，如果打了引号也会算在名称里  
