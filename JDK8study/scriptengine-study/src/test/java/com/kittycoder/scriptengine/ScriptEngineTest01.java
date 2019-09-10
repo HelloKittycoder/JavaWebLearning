@@ -12,6 +12,9 @@ import java.util.List;
 /**
  * Created by shucheng on 2019-9-10 下午 21:27
  * 参考链接：https://blog.csdn.net/jianggujin/article/details/51046122
+ * https://www.baeldung.com/java-nashorn
+ * https://blog.csdn.net/qq_1017097573/article/details/74157003
+ * https://stackoverflow.com/questions/22856279/call-external-javascript-functions-from-java-code
  */
 public class ScriptEngineTest01 {
 
