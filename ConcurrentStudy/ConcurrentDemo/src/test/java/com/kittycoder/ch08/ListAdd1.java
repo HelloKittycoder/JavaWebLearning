@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * Created by shucheng on 2019-9-18 下午 16:48
- * 线程之间的通信
+ * 线程之间的通信（使用volatile关键字）
  *
  * 说明：启动t1、t2线程后，t2线程检测到t1线程更改list1的size后变成5以后，t2线程自动终止;
  * 同时t2线程的异常会被t1线程捕获，t1线程继续执行循环，直到循环终止运行
