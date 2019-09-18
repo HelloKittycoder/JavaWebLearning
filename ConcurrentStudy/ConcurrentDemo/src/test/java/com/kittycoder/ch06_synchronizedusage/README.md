@@ -4,3 +4,4 @@
 同一对象属性的修改不会影响锁的情况 ModifyLock.java  
 synchronized可以锁的范围比较灵活 ObjectLock.java  
 缩小粒度 Optimize.java  
+String常量池的缓存功能 StringLock.java  
