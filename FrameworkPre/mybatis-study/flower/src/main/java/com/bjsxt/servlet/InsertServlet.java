@@ -1,4 +1,4 @@
-﻿package com.bjsxt.servlet;
+package com.bjsxt.servlet;
 
 import com.bjsxt.pojo.Flower;
 import com.bjsxt.service.FlowerService;
