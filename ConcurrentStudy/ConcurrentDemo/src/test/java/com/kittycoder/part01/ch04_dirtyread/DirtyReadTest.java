@@ -4,7 +4,7 @@ package com.kittycoder.part01.ch04_dirtyread;
  * Created by shucheng on 2019-9-16 下午 22:52
  * 脏读
  *
- * 业务整体需要使用完整的ssynchronized，保持业务的原子性
+ * 业务整体需要使用完整的synchronized，保持业务的原子性
  */
 public class DirtyReadTest {
 
