@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mapper namespace="com.kittycoder.mapper.UserMapper">
+    <select id="selectAllUsers" resultType="com.kittycoder.entity.User">
+        select id, name, age from user
+    </select>
+
+    <select id="selectUserById" resultType="com.kittycoder.entity.User">
+        select id, name, age from user where id = ?
+    </select>
+</mapper>
