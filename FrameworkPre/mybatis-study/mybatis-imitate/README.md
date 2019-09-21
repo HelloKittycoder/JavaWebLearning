@@ -3,4 +3,5 @@
 可以优化的点：  
 1.mapper路径写在配置文件中  
 2.参数支持传实体类，支持传多个  
+3.支持增删改操作
 参考链接：https://blog.csdn.net/wuliu_forever/article/details/88947241
