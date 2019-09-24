@@ -39,3 +39,5 @@ ch13 并发类容器
 &#8195;&#8195;带有延迟时间的队列 WangBa.java、Wangmin.java  
 ch14 Future模式  
 ch15 MasterWorker模式  
+ch16 生产者-消费者模式  
+ch17 使用Executors创建线程池 UseExecutors.java  
