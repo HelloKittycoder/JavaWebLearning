@@ -38,3 +38,4 @@ ch13 并发类容器
 &#8195;&#8195;基于优先级的阻塞队列 UsePriorityBlockingQueue.java  
 &#8195;&#8195;带有延迟时间的队列 WangBa.java、Wangmin.java  
 ch14 Future模式  
+ch15 MasterWorker模式  
