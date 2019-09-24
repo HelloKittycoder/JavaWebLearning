@@ -30,4 +30,10 @@ ch11 单例模型
 &#8195;&#8195;静态内部类 Singleton.java  
 
 #### 中级篇
-ch12 多线程使用Vector的示例 Tickets
+ch12 多线程使用Vector的示例 Tickets  
+ch13 并发类容器  
+&#8195;&#8195;ConcurrentMap使用 UseConcurrentMap.java  
+&#8195;&#8195;CopyOnWrite使用 UseCopyOnWrite.java  
+&#8195;&#8195;ConcurrentLinkedQueue、ArrayBlockingQueue、LinkedBlockingQueue、SynchronousQueue UseQueue.java  
+&#8195;&#8195;基于优先级的阻塞队列 UsePriorityBlockingQueue.java  
+&#8195;&#8195;带有延迟时间的队列 WangBa.java、Wangmin.java  
