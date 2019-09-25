@@ -41,3 +41,5 @@ ch14 Future模式
 ch15 MasterWorker模式  
 ch16 生产者-消费者模式  
 ch17 使用Executors创建线程池 UseExecutors.java  
+ch18 自定义线程池  
+使用ThreadPoolExecutor自定义拒绝策略 UseThreadPoolExecutor1.java  
