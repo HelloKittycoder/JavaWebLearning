@@ -55,3 +55,4 @@ ch19 Concurrent.util工具类使用
 &#8195;&#8195;Semaphore使用demo UseSemaphore.java  
 ch20 重入锁的使用  
 &#8195;&#8195;ReentrantLock使用demo UseReentrantLock.java  
+&#8195;&#8195;在方法中多次获得lock TestHoldCount.java  
