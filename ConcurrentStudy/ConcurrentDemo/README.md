@@ -49,4 +49,4 @@ ch18 自定义线程池
 &#8195;&#8195;使用ThreadPoolExecutor自定义拒绝策略 UseThreadPoolExecutor1.java  
 &#8195;&#8195;ThreadPoolExecutor的构造器中使用无界队列 UseThreadPoolExecutor2.java  
 ch19 Concurrent.util工具类使用  
-&#8195;&#8195;CountDownLatch使用demo UseCountDownLatch.java  
+&#8195;&#8195;CountDownLatch使用demo UseCountDownLatch.java UseCountDownLatch2.java  
