@@ -57,3 +57,4 @@ ch20 重入锁的使用
 &#8195;&#8195;ReentrantLock使用demo UseReentrantLock.java  
 &#8195;&#8195;在方法中多次获得lock TestHoldCount.java  
 &#8195;&#8195;ReentrantLock的Condition UseCondition.java  
+&#8195;&#8195;ReentrantLock使用多个Condition UseManyCondition.java  
