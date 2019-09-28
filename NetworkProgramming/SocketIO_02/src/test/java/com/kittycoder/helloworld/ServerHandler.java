@@ -8,7 +8,7 @@ import io.netty.channel.ChannelHandlerContext;
 /**
  * Created by shucheng on 2019-9-27 下午 13:52
  */
-public class ServerHanlder extends ChannelHandlerAdapter {
+public class ServerHandler extends ChannelHandlerAdapter {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {

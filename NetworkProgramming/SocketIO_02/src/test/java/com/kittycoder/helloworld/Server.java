@@ -45,7 +45,7 @@ public class Server {
             @Override
             protected void initChannel(SocketChannel sc) throws Exception {
                 // 3 在这里配置具体数据接收方法的处理
-                sc.pipeline().addLast(new ServerHanlder());
+                sc.pipeline().addLast(new ServerHandler());
             }
         });
 
