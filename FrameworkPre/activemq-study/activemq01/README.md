@@ -9,3 +9,6 @@ Sender/Receiver：
 第六步：我们需要通过MessageProducer的setDeliveryMode方法为其设置持久化特性和非持久化特性（DeliveryMode）  
 第七步：最后我们使用JMS规范的TextMessage形式创建数据（通过Session对象），并用MessageProducer的send方法发送数据，同理客户端使用receive方法接收数据。最后不要忘记关闭Connection连接。  
 （这步另外说明下：生产者是短连接，用完就关掉connection；消费者是长连接，不需要关掉connection）
+
+### ActiveMQ学习-P2P（点对点消费）
+见p2p包（主要关注下Consumer.java中session.createConsume可以对消息做筛选，另外可以对消息进行监听onMessage）
