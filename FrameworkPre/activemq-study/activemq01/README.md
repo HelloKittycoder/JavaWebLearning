@@ -12,3 +12,6 @@ Sender/Receiver：
 
 ### ActiveMQ学习-P2P（点对点消费）
 见p2p包（主要关注下Consumer.java中session.createConsume可以对消息做筛选，另外可以对消息进行监听onMessage）
+
+### ActiveMQ学习-publish/subscribe（发布/订阅）
+见pb包
