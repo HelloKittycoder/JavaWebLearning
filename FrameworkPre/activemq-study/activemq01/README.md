@@ -15,3 +15,6 @@ Sender/Receiver：
 
 ### ActiveMQ学习-publish/subscribe（发布/订阅）
 见pb包
+
+### ActiveMQ学习-简单模拟下负载均衡
+见action包
