@@ -23,7 +23,6 @@ public class Account {
 
     // 取钱
     public synchronized void draw(int time, double drawAmount) {
-        notifyAll();
         if (!flag) {
             try {
                 System.out.println(Thread.currentThread().getName() + "取钱被阻塞");
@@ -31,12 +30,14 @@ public class Account {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+        } else {
+            // 以下代码也可以不用挪到else里，把notifyAll改成notify也行
+            System.out.println(Thread.currentThread().getName() + "第" + time + "次取钱 " + drawAmount);
+            balance -= drawAmount;
+            flag = false;
+            notifyAll();
+            System.out.println("余额 " + balance);
         }
-        System.out.println(Thread.currentThread().getName() + "第" + time + "次取钱 " + drawAmount);
-        balance -= drawAmount;
-        flag = false;
-        notifyAll();
-        System.out.println("余额 " + balance);
     }
 
     // 存钱
@@ -48,11 +49,13 @@ public class Account {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+        } else {
+            // 以下代码也可以不用挪到else里，把notifyAll改成notify也行
+            System.out.println(Thread.currentThread().getName() + "第" + time + "次存钱 " + depositAmount);
+            balance += depositAmount;
+            flag = true;
+            notifyAll();
+            System.out.println("余额 " + balance);
         }
-        System.out.println(Thread.currentThread().getName() + "第" + time + "次存钱 " + depositAmount);
-        balance += depositAmount;
-        flag = true;
-        notifyAll();
-        System.out.println("余额 " + balance);
     }
 }

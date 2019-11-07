@@ -16,5 +16,6 @@ public class DemoTest1 {
         Account account = new Account("123456", 0);
         new DrawThread("甲", account).start();
         new DepositThread("乙", account).start();
+        new DepositThread("丙", account).start();
     }
 }
