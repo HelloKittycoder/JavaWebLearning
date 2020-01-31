@@ -2,6 +2,7 @@ package com.kittycoder.bean;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 
@@ -18,9 +19,10 @@ import java.util.Map;
  *
  *  只有这个组件是容器中的组件，才能使用容器提供的功能
  */
+@PropertySource(value = {"classpath:person.properties"})
 @Component
-// @ConfigurationProperties(prefix = "person")
-@Validated
+@ConfigurationProperties(prefix = "person")
+// @Validated
 public class Person {
 
     /**
