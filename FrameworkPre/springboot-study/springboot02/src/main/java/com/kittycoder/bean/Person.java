@@ -42,6 +42,8 @@ public class Person {
     private Map<String, Object> map;
     private List<Object> list;
 
+    private Dog dog;
+
     @Override
     public String toString() {
         return "Person{" +
@@ -51,6 +53,7 @@ public class Person {
                 ", birth=" + birth +
                 ", map=" + map +
                 ", list=" + list +
+                ", dog=" + dog +
                 '}';
     }
 
@@ -100,5 +103,13 @@ public class Person {
 
     public void setList(List<Object> list) {
         this.list = list;
+    }
+
+    public Dog getDog() {
+        return dog;
+    }
+
+    public void setDog(Dog dog) {
+        this.dog = dog;
     }
 }
