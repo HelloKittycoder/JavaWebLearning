@@ -12,3 +12,6 @@ springboot06-data-druid springboot整合druid
 springboot06-data-mybatis springboot整合mybatis（注解版、配置版）  
 springboot06-data-jpa springboot整合jpa  
 springboot07 springboot原理（启动容器的关键时间节点）  
+
+springboot08-starter、springboot08-starter-test  
+springboot 自定义starter  
