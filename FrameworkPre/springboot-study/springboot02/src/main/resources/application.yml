@@ -1,0 +1,14 @@
+#person:
+#  lastName: 张三
+#  age: 18
+#  boss: false
+#  birth: 2020/01/31
+#  map: {test1: test, test2: 12}
+#  list:
+#    - a
+#    - 1
+#    - 2
+#    - 3
+#  dog:
+#    name: tom
+#    age: 5

@@ -1,0 +1,18 @@
+#server:
+#  port: 8101
+#spring:
+#  profiles:
+#    active: prod
+#---
+#
+#server:
+#  port: 8102
+#spring:
+#  profiles: dev
+#
+#---
+#
+#server:
+#  port: 8103
+#spring:
+#  profiles: prod
