@@ -2,6 +2,7 @@ package com.bjsxt.mapper;
 
 import com.bjsxt.BaseTest;
 import com.bjsxt.pojo.Log;
+import com.bjsxt.pojo.LogSearch;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -144,5 +145,26 @@ public class LoggerMapperTest extends BaseTest {
         for (Log lg : list) {
             System.out.println(lg);
         }
+    }
+
+    @Test
+    public void testMapParams2() {
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("accIn", "3");
+        params.put("accOut", "1");
+        LogSearch logSearch = new LogSearch();
+        logSearch.setParams(params);
+        logSearch.setMoney(100.0);
+        List<Log> list = logMapper.testMapParams2(logSearch);
+        for (Log lg : list) {
+            System.out.println(lg);
+        }
+    }
+
+    // 测试返回Map数据
+    @Test
+    public void testReturnMap() {
+        Map<String, Object> map = session.selectMap("com.bjsxt.mapper.LogMapper.testReturnMap", "id");
+        System.out.println(map);
     }
 }

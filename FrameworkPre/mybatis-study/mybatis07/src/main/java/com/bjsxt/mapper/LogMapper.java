@@ -1,6 +1,7 @@
 package com.bjsxt.mapper;
 
 import com.bjsxt.pojo.Log;
+import com.bjsxt.pojo.LogSearch;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -31,4 +32,5 @@ public interface LogMapper {
     List<Log> testInclude();
 
     List<Log> testMapParams(@Param("params") Map<String, String> params);
+    List<Log> testMapParams2(LogSearch logSearch);
 }

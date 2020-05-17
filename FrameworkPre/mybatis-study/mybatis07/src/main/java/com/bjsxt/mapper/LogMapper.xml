@@ -143,4 +143,23 @@
             </foreach>
         </where>
     </select>
+
+    <select id="testMapParams2" parameterType="logSearch" resultType="log">
+        <!-- select * from log where accIn = '3' and accOut = '1' -->
+        select * from log
+        <where>
+            <if test="money!=null">
+                and money = #{money}
+            </if>
+            <if test="params!=null">
+                <foreach collection="params" index="key" item="value">
+                    and ${key} = #{value}
+                </foreach>
+            </if>
+        </where>
+    </select>
+
+    <select id="testReturnMap" resultType="log">
+        select * from log
+    </select>
 </mapper>
