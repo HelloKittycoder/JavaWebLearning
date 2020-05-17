@@ -1,0 +1,11 @@
+table thead th {
+    border : 1px solid black;
+}
+table tbody td {
+    border: 1px solid black;
+}
+.result-table {
+    border: 1px solid black;
+    text-align: center;
+    border-collapse: collapse;
+}

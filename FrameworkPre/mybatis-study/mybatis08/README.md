@@ -17,7 +17,7 @@
 （1） 又叫：二级缓存  
 （2） 有效范围：同一个factory内哪个SqlSession都可以获取  
 （3） 何时用二级缓存：当数据频繁被使用，很少被修改  
-（4） 使用步骤：  
+（4） 使用步骤：    
 ① 在mapper.xml中添加
   ```xml
   <cache readOnly="true"></cache>
