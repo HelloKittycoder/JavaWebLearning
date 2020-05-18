@@ -162,4 +162,9 @@
     <select id="testReturnMap" resultType="log">
         select * from log
     </select>
+
+    <!-- 测试返回boolean值 -->
+    <select id="testReturnBoolean" resultType="boolean">
+        select 1000
+    </select>
 </mapper>

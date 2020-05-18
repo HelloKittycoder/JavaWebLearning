@@ -167,4 +167,13 @@ public class LoggerMapperTest extends BaseTest {
         Map<String, Object> map = session.selectMap("com.bjsxt.mapper.LogMapper.testReturnMap", "id");
         System.out.println(map);
     }
+
+    // 测试返回boolean（数字>=1时，直接转成true；数字=0时，直接转成false）
+    @Test
+    public void testReturnBoolean() {
+        boolean b = logMapper.testReturnBoolean();
+        System.out.println(b);
+        boolean o = session.selectOne("com.bjsxt.mapper.LogMapper.testReturnBoolean");
+        System.out.println(o);
+    }
 }

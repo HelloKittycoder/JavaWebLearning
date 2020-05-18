@@ -33,4 +33,6 @@ public interface LogMapper {
 
     List<Log> testMapParams(@Param("params") Map<String, String> params);
     List<Log> testMapParams2(LogSearch logSearch);
+
+    boolean testReturnBoolean();
 }
