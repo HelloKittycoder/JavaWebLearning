@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：理解成实现类的全路径（包名+类名） -->
+<mapper namespace="com.bjsxt.mapper.HandlerMapper">
+
+    <resultMap id="handlerInfoMap" type="com.bjsxt.pojo.HandlerInfo">
+        <result jdbcType="VARCHAR" property="relatedInfo" column="jsonStr" typeHandler="com.bjsxt.extension.RelatedInfoTypeHandler"></result>
+    </resultMap>
+
+    <!-- 查询全部数据 -->
+    <select id="queryHandlerInfoList" resultMap="handlerInfoMap">
+        select l_id as id,
+               vc_name as name,
+               vc_sex as sex,
+               vc_age as age,
+               vc_json_str as jsonStr
+        from test_handler
+    </select>
+
+    <!-- 插入数据 -->
+    <insert id="insertHandlerInfo" useGeneratedKeys="true" keyProperty="id" parameterType="com.bjsxt.pojo.HandlerInfo">
+        insert into test_handler
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            l_id,
+            <if test="name != null and name != ''">vc_name,</if>
+            <if test="sex != null and sex != ''">vc_sex,</if>
+            <if test="age != null and age != ''">vc_age,</if>
+            <if test="relatedInfo != null and relatedInfo != ''">vc_json_str,</if>
+        </trim>
+        <trim prefix="values(" suffix=")" suffixOverrides=",">
+            null,
+            <if test="name != null and name != ''">#{name},</if>
+            <if test="sex != null and sex != ''">#{sex},</if>
+            <if test="age != null and age != ''">#{age},</if>
+            <if test="relatedInfo != null and relatedInfo != ''">#{relatedInfo,jdbcType=VARCHAR,typeHandler=com.bjsxt.extension.RelatedInfoTypeHandler},</if>
+        </trim>
+    </insert>
+
+    <!-- 修改数据 -->
+    <update id="updateHandlerInfo" parameterType="com.bjsxt.pojo.HandlerInfo">
+        update test_handler
+        <set>
+            vc_name = #{name},
+            <if test="sex != null">vc_sex = #{sex},</if>
+            <if test="age != null">vc_age = #{age},</if>
+            <if test="relatedInfo != null">vc_json_str = #{relatedInfo,jdbcType=VARCHAR,typeHandler=com.bjsxt.extension.RelatedInfoTypeHandler},</if>
+        </set>
+        where l_id = #{id}
+    </update>
+</mapper>
