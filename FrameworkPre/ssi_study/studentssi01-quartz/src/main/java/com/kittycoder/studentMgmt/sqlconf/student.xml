@@ -33,4 +33,9 @@
     <delete id="deleteStudent" parameterClass="java.lang.Integer">
         delete from student where id = #id#
     </delete>
+
+    <!-- 测试返回boolean值 -->
+    <select id="testReturnBoolean" resultClass="boolean">
+        select count(*) from student where id = 100
+    </select>
 </sqlMap>

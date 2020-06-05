@@ -40,4 +40,6 @@ public interface StudentService {
      * @param id
      */
     void deleteStudent(int id);
+
+    boolean testReturnBoolean();
 }

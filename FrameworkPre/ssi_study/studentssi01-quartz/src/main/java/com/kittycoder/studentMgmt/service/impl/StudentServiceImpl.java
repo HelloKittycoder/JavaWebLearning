@@ -42,4 +42,9 @@ public class StudentServiceImpl implements StudentService {
         // 也可以使用下面这个
         commonDao.deleteObject(id, "student.deleteStudent");
     }
+
+    @Override
+    public boolean testReturnBoolean() {
+        return (boolean) commonDao.getAttributeByPoJo(null, "student.testReturnBoolean");
+    }
 }

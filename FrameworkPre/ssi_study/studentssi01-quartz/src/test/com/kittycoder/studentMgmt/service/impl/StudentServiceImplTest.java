@@ -61,4 +61,10 @@ public class StudentServiceImplTest {
         studentService.deleteStudent(3);
         System.out.println("数据删除成功");
     }
+
+    @Test
+    public void testReturnBoolean() throws Exception {
+        boolean b = studentService.testReturnBoolean();
+        System.out.println(b);
+    }
 }
