@@ -1,5 +1,6 @@
 package com.kittycoder.interceptor;
 
+import org.apache.ibatis.binding.MapperProxy;
 import org.apache.ibatis.cache.CacheKey;
 import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.mapping.BoundSql;
@@ -18,6 +19,8 @@ import org.apache.ibatis.type.TypeHandlerRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -66,8 +69,50 @@ public class SqlPrintInterceptor implements Interceptor {
         String statementId = ms.getId();
         BoundSql boundSql = ms.getBoundSql(parameterObject); // 获取关联的sql
         String sql = assembleSql(boundSql, parameterObject, ms.getConfiguration());
-        logger.error("collapsed time:" + timing + " ms" + " - id==" + statementId + "\r\n-Sql:" + sql);
+        // sql信息打印
+        Logger log = printSqlInfo(statementId, sql);
+        // sql执行时间（ms）
+        log.info(statementId + " elasped " + timing + " ms");
         return result;
+    }
+
+    // sql信息打印
+    private static Logger printSqlInfo(String sqlId, String sql) {
+        // 获取sql是哪个service执行的
+        StackTraceElement[] stacks = Thread.currentThread().getStackTrace();
+        String requestURI = null, serviceMethodName = null;
+        boolean condition2;
+
+        int i = 0;
+        while (i < stacks.length) {
+            condition2 = MapperProxy.class.getName().equals(stacks[i].getClassName());
+
+            if (condition2) {
+                serviceMethodName = stacks[i + 2].getClassName() + "." + stacks[i + 2].getMethodName()
+                        + "(" + stacks[i + 2].getLineNumber() +  ")";
+            }
+            i++;
+        }
+
+        if (RequestContextHolder.getRequestAttributes() != null) {
+            requestURI = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getRequestURI();
+        }
+        String info = requestURI
+                + "********" +serviceMethodName
+                + "******sqlId-" + sqlId + "**************\n"
+                + sql;
+
+        // System.out.println(stacks);
+        Logger log;
+        if (serviceMethodName == null) {
+            log = logger;
+        } else {
+            log = LoggerFactory.getLogger(serviceMethodName);
+        }
+
+        // controller--service--sqlId
+        log.info(info);
+        return log;
     }
 
     // 拼接sql
