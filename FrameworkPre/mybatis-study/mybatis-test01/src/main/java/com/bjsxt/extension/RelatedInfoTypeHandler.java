@@ -13,6 +13,7 @@ import java.sql.SQLException;
 
 /**
  * Created by shucheng on 2020/6/5 22:34
+ * 参考链接：https://www.iteye.com/blog/elim-1847854
  */
 public class RelatedInfoTypeHandler extends BaseTypeHandler<RelatedInfo> {
     @Override
