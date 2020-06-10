@@ -49,4 +49,16 @@
         </set>
         where l_id = #{id}
     </update>
+
+    <!-- 查询出一个map（key是l_id的值，value是vc_name的值） -->
+    <resultMap id="mapResult" type="java.util.Map">
+        <result column="l_id" property="key"/>
+        <result column="vc_name" property="value"/>
+    </resultMap>
+
+    <select id="selectIdNameMap" resultMap="mapResult">
+        select l_id,
+               vc_name
+        from test_handler
+    </select>
 </mapper>

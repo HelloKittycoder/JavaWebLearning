@@ -1,12 +1,14 @@
 package com.bjsxt.mapper;
 
 import com.bjsxt.BaseTest;
+import com.bjsxt.extension.MapResultHandler;
 import com.bjsxt.pojo.HandlerInfo;
 import com.bjsxt.pojo.RelatedInfo;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by shucheng on 2020/6/5 22:34
@@ -46,5 +48,13 @@ public class HandlerMapperTest extends BaseTest {
         handlerMapper.updateHandlerInfo(handlerInfo);
         System.out.println(handlerInfo);
         session.commit();
+    }
+
+    @Test
+    public void testSelectIdNameMap() {
+        MapResultHandler resultHandler = new MapResultHandler();
+        handlerMapper.selectIdNameMap(resultHandler);
+        Map<String, String> resultMap = resultHandler.getMappedResults();
+        System.out.println(resultMap);
     }
 }

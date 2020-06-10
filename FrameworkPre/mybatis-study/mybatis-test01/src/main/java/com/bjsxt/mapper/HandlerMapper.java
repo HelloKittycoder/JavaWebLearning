@@ -1,6 +1,7 @@
 package com.bjsxt.mapper;
 
 import com.bjsxt.pojo.HandlerInfo;
+import org.apache.ibatis.session.ResultHandler;
 
 import java.util.List;
 
@@ -14,4 +15,6 @@ public interface HandlerMapper {
     void insertHandlerInfo(HandlerInfo handlerInfo);
 
     void updateHandlerInfo(HandlerInfo handlerInfo);
+
+    void selectIdNameMap(ResultHandler resultHandler);
 }
