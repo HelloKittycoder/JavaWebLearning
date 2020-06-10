@@ -27,3 +27,7 @@
 ### DBUtils ###
 /DbUtils/DbUtilsDemo/*.iml
 /DbUtils/DbUtilsDemo/target/
+
+### CommonsLang ###
+/CommonsLang/*.iml
+/CommonsLang/target/
