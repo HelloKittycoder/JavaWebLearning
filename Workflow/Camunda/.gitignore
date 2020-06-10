@@ -1,0 +1,41 @@
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+/build/
+
+### camundastudy01 ###
+/camundastudy01/*.iml
+/camundastudy01/target/
+
+### camundastudy02 ###
+/camundastudy02/*.iml
+/camundastudy02/target/
+
+### camundastudy03 ###
+/camundastudy03/*.iml
+/camundastudy03/target/
+
+### camundastudy04 ###
+/camundastudy04/*.iml
+/camundastudy04/target/
