@@ -6,9 +6,12 @@
 			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 
     <!-- 注入sqlMapClient -->
-    <bean id="baseDao" abstract="true" class="com.kittycoder.common.dao.impl.CommonDaoImpl">
+    <bean id="baseDao" abstract="true" class="com.kittycoder.common.extension.ExtSqlMapClientDaoSupport" init-method="initialize">
         <property name="sqlMapClient">
             <ref bean="sqlMapClient"/>
+        </property>
+        <property name="sqlExecutor">
+            <ref bean="sqlExecutor"/>
         </property>
     </bean>
 

@@ -1,14 +1,14 @@
 package com.kittycoder.common.dao.impl;
 
 import com.kittycoder.common.dao.CommonDao;
-import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
+import com.kittycoder.common.extension.ExtSqlMapClientDaoSupport;
 
 import java.util.List;
 
 /**
  * Created by shucheng on 2018/4/26.
  */
-public class CommonDaoImpl extends SqlMapClientDaoSupport implements CommonDao {
+public class CommonDaoImpl extends ExtSqlMapClientDaoSupport implements CommonDao {
 
     @Override
     public List getAttributeList(Object obj, String action) {
