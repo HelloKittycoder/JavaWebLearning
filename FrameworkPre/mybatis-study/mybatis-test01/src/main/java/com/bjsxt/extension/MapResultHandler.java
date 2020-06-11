@@ -9,6 +9,7 @@ import java.util.Map;
 /**
  * Created by shucheng on 2020/6/8 22:52
  * 参考链接：https://www.jianshu.com/p/a88b18475f78
+ * https://blog.csdn.net/Dongguabai/article/details/90246717
  * https://www.jianshu.com/p/8773d0e786d8
  */
 public class MapResultHandler implements ResultHandler {
