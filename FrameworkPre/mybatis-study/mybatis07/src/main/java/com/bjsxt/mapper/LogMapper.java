@@ -35,4 +35,12 @@ public interface LogMapper {
     List<Log> testMapParams2(LogSearch logSearch);
 
     boolean testReturnBoolean();
+
+    /**
+     * 以下两种写法都是动态执行sql
+     * sql里面可以写#{}来动态替换参数，但是不能写mybatis里的if等标签，
+     * 此时mybatis不会去进行解析
+     */
+    List<Map<String, Object>> executeSql(Map<String, String> params);
+    List<Log> executeSqlTwo(Map<String, String> params);
 }

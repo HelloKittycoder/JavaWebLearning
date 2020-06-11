@@ -176,4 +176,32 @@ public class LoggerMapperTest extends BaseTest {
         boolean o = session.selectOne("com.bjsxt.mapper.LogMapper.testReturnBoolean");
         System.out.println(o);
     }
+
+    @Test
+    public void testExecuteSql() {
+        Map<String, String> params = new HashMap<>();
+        params.put("sql", "select * from log where accin = #{accIn} and accout = #{accOut}");
+        // 这种情况有4条数据
+        params.put("accIn", "3");
+        params.put("accOut", "1");
+        /*// 这种情况有2条数据
+        params.put("accIn", "3");
+        params.put("accOut", "2");*/
+        List<Map<String, Object>> result = logMapper.executeSql(params);
+        System.out.println(result);
+    }
+
+    @Test
+    public void testExecuteSqlTwo() {
+        Map<String, String> params = new HashMap<>();
+        params.put("sql", "select * from log where accin = #{accIn} and accout = #{accOut}");
+        // 这种情况有4条数据
+        params.put("accIn", "3");
+        params.put("accOut", "1");
+        /*// 这种情况有2条数据
+        params.put("accIn", "3");
+        params.put("accOut", "2");*/
+        List<Log> result = logMapper.executeSqlTwo(params);
+        System.out.println(result);
+    }
 }

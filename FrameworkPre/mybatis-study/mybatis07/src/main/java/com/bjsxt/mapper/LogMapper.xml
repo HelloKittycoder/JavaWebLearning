@@ -167,4 +167,15 @@
     <select id="testReturnBoolean" resultType="boolean">
         select 1000
     </select>
+
+    <!-- 以下写法参考链接：https://blog.csdn.net/Simon_09010817/article/details/103361492 -->
+    <!-- 执行sql，返回的单条结果放到map中 -->
+    <select id="executeSql" resultType="java.util.Map">
+        ${sql}
+    </select>
+
+    <!-- 执行sql，返回的单条结果放到Log类中 -->
+    <select id="executeSqlTwo" resultType="log">
+        ${sql}
+    </select>
 </mapper>
