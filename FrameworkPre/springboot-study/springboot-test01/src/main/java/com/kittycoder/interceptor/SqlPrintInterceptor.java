@@ -60,17 +60,16 @@ public class SqlPrintInterceptor implements Interceptor {
         if (invocation.getArgs().length > 1) {
             parameterObject = invocation.getArgs()[1];
         }
-
-        long start = System.currentTimeMillis();
-        Object result = invocation.proceed();
-        long end = System.currentTimeMillis();
-        long timing = end - start;
-
         String statementId = ms.getId();
         BoundSql boundSql = ms.getBoundSql(parameterObject); // 获取关联的sql
         String sql = assembleSql(boundSql, parameterObject, ms.getConfiguration());
         // sql信息打印
         Logger log = printSqlInfo(statementId, sql);
+
+        long start = System.currentTimeMillis();
+        Object result = invocation.proceed();
+        long end = System.currentTimeMillis();
+        long timing = end - start;
         // sql执行时间（ms）
         log.info(statementId + " elasped " + timing + " ms");
         return result;
