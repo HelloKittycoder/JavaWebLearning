@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+        PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+        "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="student">
+    <select id="queryAll" parameterClass="com.kittycoder.student.pojo.Student"
+            resultClass="com.kittycoder.student.pojo.Student">
+        select * from student
+    </select>
+
+    <insert id="insertStudent" parameterClass="com.kittycoder.student.pojo.Student">
+        <selectKey keyProperty="id" type="post">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into student(id, name, age)
+        values(null, #name#, #age#)
+    </insert>
+
+    <insert id="insertStudent2" parameterClass="java.util.List">
+        insert into student(id, name, age)
+        <iterate prepend="values " conjunction=",">
+            (null, #list[].name#, #list[].age#)
+        </iterate>
+    </insert>
+
+    <update id="updateStudent" parameterClass="com.kittycoder.student.pojo.Student">
+        update student
+        set id = #id#
+        <isNotNull property="name" prepend=",">name = #name#</isNotNull>
+        <isNotNull property="age" prepend=",">age = #age#</isNotNull>
+        where id = #id#
+    </update>
+
+    <delete id="deleteStudent" parameterClass="java.lang.Integer">
+        delete from student where id=#id#
+    </delete>
+</sqlMap>
