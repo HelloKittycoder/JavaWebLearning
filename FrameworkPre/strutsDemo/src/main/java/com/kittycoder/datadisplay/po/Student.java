@@ -50,4 +50,14 @@ public class Student {
     public void setSage(String sage) {
         this.sage = sage;
     }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "sid=" + sid +
+                ", sname='" + sname + '\'' +
+                ", sbirthday='" + sbirthday + '\'' +
+                ", sage='" + sage + '\'' +
+                '}';
+    }
 }

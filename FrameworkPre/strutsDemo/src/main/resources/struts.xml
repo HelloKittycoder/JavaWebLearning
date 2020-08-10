@@ -5,6 +5,9 @@
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
+    <!-- 要允许ognl在jsp能调用后台静态方法，需要另外配置这个参数 -->
+    <constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant>
+
     <package name="strutsDemo" extends="json-default" namespace="/datadisplay">
         <!-- 测试struts2在前台接收object数据 -->
         <action name="testObject" class="com.kittycoder.datadisplay.action.ObjectAction" method="testObject">
@@ -18,6 +21,10 @@
         <action name="testList" class="com.kittycoder.datadisplay.action.ListAction" method="testList">
             <result name="success">/datadisplay/listDemo.jsp</result>
             <result name="jsonData" type="json"></result>
+        </action>
+        <!-- 测试struts2中ognl表达式的使用 -->
+        <action name="testOgnl" class="com.kittycoder.datadisplay.action.OgnlAction" method="testOgnl">
+            <result name="success">/datadisplay/ognlDemo.jsp</result>
         </action>
         <!-- 测试struts下载 -->
         <action name="testDownload" class="com.kittycoder.datadisplay.action.DownloadAction" method="downloadFile">
