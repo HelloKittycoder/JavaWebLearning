@@ -8,6 +8,9 @@ import com.alibaba.fastjson.util.ParameterizedTypeImpl;
 import com.kittycoder.baseUsageTest.po.Student;
 import org.junit.Test;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Type;
 import java.util.*;
 
@@ -209,6 +212,45 @@ public class FastJsonTest {
         Type type3 = new ParameterizedTypeImpl(new Type[]{Integer.class, Student.class}, null, Map.class);
         Map<Integer, Student> map3 = JSON.parseObject(jsonData, type3);
         System.out.println(map3);
+    }
+
+    // 补充：将输入流的json字符串解析成Map、对象
+    @Test
+    public void readDataFromInputStream() {
+        InputStream is1 = null;
+        InputStream is2 = null;
+        try {
+            is1 = getFileInputStream("test.json");
+            TypeReference typeReference = new TypeReference<Map<String, String>>(){};
+            Type type = typeReference.getType();
+            Map<String, String> resultMap = JSON.parseObject(is1, type);
+            System.out.println(resultMap);
+
+            is2 = getFileInputStream("test.json");
+            Student student = JSON.parseObject(is2, Student.class);
+            System.out.println(student);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (is1 != null) {
+                    is1.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                if (is2 != null) {
+                    is2.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private InputStream getFileInputStream(String fileName) {
+        return getClass().getResourceAsStream("test.json");
     }
 
     // 判断是否为json数组
